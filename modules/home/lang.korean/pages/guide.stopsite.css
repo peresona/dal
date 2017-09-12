@@ -1,0 +1,9 @@
+#guidebox {margin:200px auto;width:400px;padding:20px;border:#dfdfdf solid 5px;}
+#guidebox h1 {font-family:"malgun gothic";font-size:25px;padding:0 0 10px 0;margin:0;border-bottom:#dfdfdf solid 1px;}
+#guidebox ul {padding:20px 0 0 20px;margin:0;}
+#guidebox li {padding:5px 0 5px 0;color:#999;}
+
+#guidebox_mobile {padding:20px;}
+#guidebox_mobile h1 {font-family:"malgun gothic";font-size:25px;padding:0 0 10px 0;margin:0;border-bottom:#dfdfdf solid 1px;}
+#guidebox_mobile ul {padding:20px 0 0 20px;margin:0;}
+#guidebox_mobile li {padding:5px 0 5px 0;color:#999;}

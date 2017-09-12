@@ -1,0 +1,21 @@
+#loginBox {padding:15px 0 0 20px;}
+#loginBox fieldset {float:left;width:230px;border:0;padding:0;margin:0;}
+#loginBox fieldset label {display:block;color:#BABABA;padding:0;margin:0;}
+#loginBox fieldset label div {padding:10px 0 5px 0;color:#666;}
+#loginBox fieldset .submit {padding:15px 0 0 1px;}
+#loginBox fieldset .submit span {color:#888;font-size:11px;font-family:dotum;letter-spacing:-1px;}
+#loginBox fieldset .xi {background:#efefef;border:1px solid #dfdfdf;border-radius:4px 4px 4px 4px;box-shadow:0 1px 0 #999;color:#000;font:13px Arial,sans-serif;padding:6px 25px 4px 6px;width:170px;}
+#loginBox fieldset .xi:hover {background:#efefef;}
+#loginBox fieldset .xi:focus {background:#f9f9f9;color:#333;outline:none;}
+#loginBox fieldset .btnblue {width:70px;height:25px;position:relative;top:-30px;left:132px;}
+
+#loginBox .snslog {float:left;width:215px;height:170px;border-left:#dfdfdf solid 1px;margin:0;padding:0 0 0 25px;}
+#loginBox .snslog .tt {padding:10px 0 6px 0;margin-bottom:15px;font-weight:bold;color:#666666;border-bottom:#dfdfdf solid 1px;}
+#loginBox .snslog .icon {cursor:pointer;}
+#loginBox .snslog .icon img {margin:10px 4px 0 0;}
+#loginBox .snslog .guide {line-height:140%;font-size:11px;font-family:dotum;color:#999;letter-spacing:-1px;padding:17px 0 0 0;}
+
+#loginBox .snslog ._uset_ {filter:alpha('opacity=20');opacity:0.2;}
+#loginBox .snslog ._usef_ {filter:alpha('opacity=20');opacity:0.2;}
+#loginBox .snslog ._usem_ {filter:alpha('opacity=20');opacity:0.2;}
+#loginBox .snslog ._usey_ {filter:alpha('opacity=20');opacity:0.2;}

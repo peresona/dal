@@ -1,0 +1,5 @@
+#snsNbox {padding:20px 0 0 15px;}
+#snsNbox .snsaccount {}
+#snsNbox .snsaccount .snsx {float:left;display:block;width:60px;text-align:center;margin:0 10px 0 0;vertical-align:top;}
+#snsNbox .snsaccount .snsx span {display:block;font-weight:bold;color:#555555;padding:7px 0 13px 0;}
+#snsNbox .snsaccount .snsx .issns {color:#2D76B9;}

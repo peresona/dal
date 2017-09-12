@@ -1,0 +1,35 @@
+#jointbox {width:100%;}
+#jointbox .header {height:50px;border-bottom:#000000 solid 1px;background:#343B48;}
+#jointbox .header h1 {float:left;padding:3px 20px 0 20px;margin:0;font-family:"malgun gothic";font-size:26px;color:#ffffff;}
+#jointbox .header .guide {float:left;border-left:#999 dotted 1px;color:#888;font-family:dotum;font-size:11px;line-height:150%;margin:10px 0 0 0;padding:0 0 0 20px;}
+#jointbox .line1 {height:1px;background:#1ACAD4;}
+#jointbox .line2 {height:2px;background:#0BA2B4;}
+#jointbox .line3 {height:1px;background:#037F93;}
+#jointbox .category {float:left;width:200px;height:430px;margin-right:-200px;border-right:#dfdfdf solid 1px;overflow-y:auto;overflow-x:hidden;}
+#jointbox .category ul {padding:20px 0 0 20px;margin:0;}
+#jointbox .category li {list-style-type:none;padding:3px 0 3px 20px;background:url('../../../../_core/image/_public/ico_folder_01.gif') left 2px no-repeat;}
+#jointbox .category .selected {background:url('../../../../_core/image/_public/ico_folder_02.gif') left 2px no-repeat;}
+#jointbox .category .selected a {color:#ff0000;}
+#jointbox .category li a span {font-size:11px;font-family:arial;color:#c0c0c0;padding:0 0 0 3px;}
+#jointbox .content {margin-left:200px;height:390px;padding:25px 15px 15px 15px;overflow-y:auto;overflow-x:hidden;}
+#jointbox .content .none {font-size:15px;font-family:dotum;color:#c0c0c0;text-align:center;padding:50px 0 0 0;}
+#jointbox .content .none img {position:relative;top:1px;}
+#jointbox .footer {height:50px;border-top:#dfdfdf solid 1px;text-align:center;padding:10px 0 0 0;}
+
+#jointMbox {width:100%;}
+#jointMbox .header {border-bottom:#000000 solid 1px;background:#343B48;}
+#jointMbox .header h1 {padding:10px 0 10px 10px;margin:0;font-size:26px;color:#ffffff;}
+#jointMbox .line1 {height:1px;background:#1ACAD4;}
+#jointMbox .line2 {height:2px;background:#0BA2B4;}
+#jointMbox .line3 {height:1px;background:#037F93;}
+#jointMbox .guide {color:#888;font-size:11px;line-height:150%;padding:10px 0 10px 10px;border-bottom:#dfdfdf solid 1px;}
+#jointMbox .category {padding:0 0 15px 0;border-bottom:#dfdfdf solid 1px;}
+#jointMbox .category ul {padding:20px 0 0 20px;margin:0;}
+#jointMbox .category li {list-style-type:none;padding:3px 0 3px 20px;background:url('../../../../_core/image/_public/ico_folder_01.gif') left 2px no-repeat;}
+#jointMbox .category .selected {background:url('../../../../_core/image/_public/ico_folder_02.gif') left 2px no-repeat;}
+#jointMbox .category .selected a {color:#ff0000;}
+#jointMbox .category li a span {font-size:11px;font-family:arial;color:#c0c0c0;padding:0 0 0 3px;}
+#jointMbox .content {padding:25px 15px 15px 15px;overflow-y:auto;overflow-x:hidden;}
+#jointMbox .content .none {font-size:12px;color:#c0c0c0;text-align:center;padding:20px 0 20px 0;}
+#jointMbox .content .none img {position:relative;top:1px;}
+#jointMbox .footer {border-top:#dfdfdf solid 1px;text-align:center;padding:20px 0 20px 0;}
