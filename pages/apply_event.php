@@ -113,31 +113,23 @@
 				<input type="text" id="a_email" name="a_email" class="d_form_underline" placeholder="담당자 메일주소를 입력해주세요." value="<?=$a_email?>" maxlength="200">
 			</div>
 			<div class="join_cl">
-				<div class="cl"> <font class="black">교육 장소</font><br> </div>
-					<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-					<script src="/static/locationpicker.jquery.min.js"></script>
-					<input type="hidden" id="a_lat" name="a_lat">
-					<input type="hidden" id="a_long" name="a_long">
-					<input type="text" id="a_address" name="a_address" style="width: 550px;" value="<?=$a_address?>"><br>
-					<input type="text" id="a_address_detail" name="a_address_detail" style="width: 550px;" placeholder="상세주소"
-					 value="<?=$a_address_detail?>">
-					<div id="grp_map" style="width: 550px; height: 400px;"></div>
-					<script>
-					    $('#grp_map').locationpicker({
-		location: {
-		latitude: <?=($a_lat?$a_lat:'37.49789009883285')?>,
-		longitude: <?=($a_long?$a_long:'127.02757669561147')?>
-		},
-		radius: 0,
-		<?php if($a_lat) echo "zoom: 18," ?>
-		inputBinding: {
-		latitudeInput: $('#a_lat'),
-		longitudeInput: $('#a_long'),
-		locationNameInput: $('#a_address')
-		},
-		enableAutocomplete: true
-		});
-					</script>
+
+
+
+
+
+				<div class="cl"> 
+					<font class="black">교육 장소</font><br> 
+				</div>
+
+					<input type="hidden" id="addr_lat" name="a_lat" value="">
+					<input type="hidden" id="addr_long" name="a_long" value="">
+					<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력  예) 서울 삼성동 152-67" autocomplete="off">
+					<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
+					<div id="grp_map" style="width: 100%; height: 350px;"></div>
+					<input type="text" id="address" class="d_form_underline" name="a_address" style="width: 100%;" value="" readonly="readonly" placeholder="주소 (지도 위 검색 후 자동 기입)"><br>
+					<input type="text" id="address_detail" class="d_form_underline" name="a_address_detail" style="width: 100%;" placeholder="상세주소"
+					 value="" autocomplete="off">
 			</div>
 
 			<div class="join_cl">
@@ -348,6 +340,13 @@ function saveCheck(f)
 		return false;
 	}
 
+	if (f.a_address.value == '' || f.a_address_detail.value == '' ||  f.a_address_detail.value == '' ||  f.a_lat.value == '' || f.a_long.value == '')
+	{
+		alert('교육 장소를 지도에 표시 후 상세주소를 입력해주세요.');
+		f.a_address.focus();
+		return false;
+	}
+
 	if (f.a_program.value == '' || f.a_program.value == '0')
 	{
 		alert('프로그램을 선택해 주세요.');
@@ -426,3 +425,10 @@ $(document).ready(function(){
 //]]>
 </script>
 
+
+<script>
+	var default_lat = '';
+	var default_long = '';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>

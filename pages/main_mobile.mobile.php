@@ -50,7 +50,7 @@
 					<li class="btn"><a href="/join">회원가입</a></li>
 					<?php endif;?>
 					<li class="btn"><a href="/apply/">수강신청</a></li>
-					<li class="btn"><a href="/cs/">교육문의</a></li>
+					<li class="btn"><a href="/cs/">문의</a></li>
 				</ul>
 			</div>
 		</div>
@@ -234,3 +234,38 @@
 			</div>
 		</article>
 	</section>
+
+<?php if(strpos($g['url_host'], 'app.')):?>
+<script>
+	function resultSuccess(arg){
+		var phoneDatas = JSON.parse(arg);
+		var form_data = {
+			REGID: phoneDatas.regid,
+			UUID: phoneDatas.uuid,
+			DEV: phoneDatas.dev
+		};
+		$.ajax({
+			type: "POST",
+			url: '/?r=home&a=change_uuid',
+			data: form_data,
+			success: function(response) {
+				var res = JSON.parse(response);
+				if(res.code == 100){
+					console.log('Change complate User Mobile UUID.');
+				}
+			}
+		});
+	}
+
+	function getUuid(_succFn){
+		var param = {
+			succFn : _succFn // Succ Fn name
+		};
+		Hybrid.exe('HybridIf.getUuid', param);
+	}
+	window.onload = function()
+	{
+		getUuid('resultSuccess'); // UUID 받아오기
+	}
+</script>
+<?php endif; ?>
