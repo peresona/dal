@@ -1,0 +1,14 @@
+h2 { font-size:24px; margin-bottom: 20px; line-height: 30px;}
+
+#box_timeline  {
+	color : #666;
+	min-height: 100px;
+	margin-bottom: 70px;
+}
+
+.time_list {width: 280px; margin: 0 20px 30px 0px; line-height: 1.5em; float: left;  font-size: 12px;}
+.time_list:hover h1 {color:#FEC55A; cursor: pointer;}
+.time_list h1 {font-weight: normal; font-size: 19px; color: #444; overflow: hidden;  text-overflow:ellipsis;  white-space:nowrap; margin: 0 20px 5px 20px;}
+.time_list h4 {font-weight: normal; font-size: 12px; color:#999;}
+.time_list .midline {width: 50px; border-bottom: solid 2px #999; display: block; margin:10px auto;}
+.time_list .time_pic {width: 280px; height: 223px; background-color: #ddd; margin-bottom:20px;}

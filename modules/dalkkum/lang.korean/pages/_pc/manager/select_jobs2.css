@@ -1,0 +1,29 @@
+ 	.cl {clear: both; overflow-y: hidden;}
+ 	.fr {float: right;}
+
+#select_sc {width:100%; min-width: 450px;}
+#select_sc select {height: 30px; }
+
+#select_sc>.header {height:50px;border-bottom:#000000 solid 1px;background:#343B48;}
+#select_sc .header h1 {float:left;padding:3px 20px 0 20px;margin:0;font-size:26px;color:#ffffff; line-height: 40px}
+#select_sc .header .guide {float:left;border-left:#999 dotted 1px;color:#888;font-family:dotum;font-size:11px;line-height:150%;margin:10px 0 0 0;padding:0 0 0 20px;}
+
+#select_sc .line1 {height:1px;background:#1ACAD4;}
+#select_sc .line2 {height:2px;background:#0BA2B4;}
+#select_sc .line3 {height:1px;background:#037F93;}
+
+#select_sc .content {height:390px;padding:15px;overflow-y:auto;overflow-x:hidden;}
+#select_sc .content .none {font-size:15px;font-family:dotum;color:#c0c0c0;text-align:center;padding:50px 0 0 0;}
+#select_sc .content .none img {position:relative;top:1px;}
+
+#select_sc table {text-align: center; width:100%;}
+#select_sc table tr{ line-height: 30px;height: 30px;}
+#select_sc table tr th {background-color: #ddd; }
+#select_sc table tr:hover {background-color: #eee; }
+#select_sc input.limit, #select_sc input.limit2 {width: 70%}
+
+table#mentorTable th.header {cursor: pointer;}
+table#mentorTable th.headerSortDown {background-color: #ff9999}
+table#mentorTable th.headerSortUp {background-color: #99ccff}
+
+#select_sc .footer {height:50px;border-top:#dfdfdf solid 1px;text-align:center;padding:10px 0 0 0;}

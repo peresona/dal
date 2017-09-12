@@ -1,0 +1,65 @@
+
+	/* 메인 수강신청 관련 */
+	body {background-color: #F6F6F6; }
+	#d_apply_list { margin:0px auto 65px auto; } 
+	#d_apply_list .times_box{ margin:20px 0 40px 0; padding: 30px 0; border:solid 1px #E0E0E0; background-color: #FFF; overflow-y: hidden;} 
+	#d_apply_list .times_box > ul > li {float:left; display: inline-block; width: 20%; height: 310px; padding: 30px 65px; text-align: center; font-size:14px; box-sizing: border-box;}
+	#d_apply_list .times_box > ul > li img {box-sizing:border-box; border-radius: 50px; width: 100px; height: 100px; border:solid 1px #ddd;}
+	#d_apply_list .times_box > ul > li .apply_btn {width: 90px; height: 42px; line-height: 42px; color: #FFF; background-color: #704DE4; border:none; font-size:16px; margin: 10px 0;}
+	#d_apply_list .times_box > ul > li .apply_btn:hover {background-color: #FEC55A;}
+	#d_apply_list .times_box > ul > li .mentor_job {font-size:16px; font-weight: bold; height: 30px; color:#6F4DE3; display: -webkit-box; -webkit-line-clamp: 2; /* 라인수 */}
+	#d_apply_list .times_box > ul > li .mentor_name {font-size:16px; font-weight: bold; height: 20px; color:#000; margin-top: 10px;}
+	#d_apply_list .times_box > ul > li .mentor_pic {height: 100px; color:#6F4DE3;}
+	#d_apply_list .times_box > ul > li .mentor_pic img {border-radius: : 50px}
+	#d_apply_list .times_box > ul > li .ellipsis{ overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; word-wrap:break-word; } 
+
+		/* 개인 상단 */
+	#list_head { height: 406px;  color:#FFF; text-align: center; font-size: 18px; line-height: 20px;}
+	#list_head h1 { font-size: 26px; line-height: 30px;}
+	#list_head img {border-radius: 100px; border:solid 3px #fec55a; margin:20px;}
+
+		#apply_popup {
+		width: 1100px;
+		border-top:solid 1px #E0E0E0;
+		border-left:solid 1px #E0E0E0;
+		border-right:solid 1px #E0E0E0;
+	}
+	#apply_popup > .cl{
+		padding:0 10px; 
+	}
+	#apply_popup > .cl.boxing{
+		height: 240px;
+		overflow-y: scroll;
+		margin: 15px 0;
+	}
+	#apply_popup > .cl.boxing table tr th, #apply_popup > .cl.boxing table tr td{
+		height: 40px;
+		line-height: 40px; 
+		text-align: center;
+		border-collapse: collapse;
+		border:solid 1px #828282;
+		border-left: none;
+		border-right: none;
+	}
+	#apply_popup .otitle{
+		margin:16px 0; height:40px; line-height: 40px; font-weight: bold;
+	}
+	#apply_popup .black_cancel{
+		display: inline-block;	background-color: #000; 
+		width: 75px;height: 30px;font-size: 15px; 
+		line-height: 30px;margin: 5px 0;border:none;color:#FFF;
+	}
+	#apply_popup .black_cancel:hover {
+		background-color: #666;
+	}
+	#apply_popup_wrap {position: fixed; bottom: -271px; width: 100%;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+     }
+	#apply_popup_wrap.active {bottom:0;}
+	#apply_popup_wrap.active .close,
+	#apply_popup_wrap .open {display: block;}
+	#apply_popup_wrap .close,
+	#apply_popup_wrap.active .open {display: none;}

@@ -1,0 +1,44 @@
+#pages_join { margin: 20px 20px 70px 20px; line-height: 30px; font-size: 12px;}
+
+#pages_join .msg {padding:0 0 25px 20px;color:#666;font-size:12px;}
+#pages_join .msg span {color:#ff6600;}
+#pages_join h2.apply {font-size:20px;border:none;}
+#pages_join .cl.orangebox {border:solid 2px #fec55a;color:#414141; padding: 0 15px; line-height: 50px; height: 50px; font-size: 14px;}
+#pages_join .cl.orangebox span.inline-text {font-weight: bold; color:#000; margin-left: 10px;}
+
+#pages_join .key {font-weight:bold;padding-left:20px;width:150px;color:#111;}
+#pages_join .key span {font-weight:normal;font-size:12px;font-family:arial;color:#ff0000;padding:0 0 0 5px;}
+#pages_join .submitbox {text-align: center;}
+#pages_join .submitbox .btnorange {width: 265px; height: 50px;}
+#pages_join .submitbox input {height:30px;margin:0 2px 0 2px;padding:0 10px 0 10px;font-weight:bold;}
+
+#pages_join > .cl.boxing table{
+	margin-top: 20px;
+}
+
+#pages_join > .cl.boxing table tr th, #pages_join > .cl.boxing table tr td{
+	height: 49px;
+	color:#000;
+	line-height: 50px; 
+	text-align: center;
+	border-collapse: collapse;
+	border-bottom:solid 1px #828282;
+	border-left: none;
+	border-right: none;
+}
+
+#pages_join > .cl.boxing table tr th{
+	border-bottom:solid 2px #656565;
+}
+
+#pages_join .otitle{
+	margin:16px 0; height:40px; line-height: 40px; font-weight: bold;
+}
+#pages_join .black_cancel{
+	display: inline-block;	background-color: #000; 
+	width: 75px;height: 30px;font-size: 15px; 
+	line-height: 30px;margin: 5px 0;border:none;color:#FFF;
+}
+#pages_join .black_cancel:hover {
+	background-color: #666;
+}

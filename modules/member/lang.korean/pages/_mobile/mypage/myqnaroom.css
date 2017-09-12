@@ -1,0 +1,25 @@
+.myqna_wrap { overflow-y: hidden; clear: both; }
+.myqna_wrap * { box-sizing: border-box; }
+.myqna {clear: both; padding: 20px;}
+.myqna h2 { font-size: 20px; padding: 0 0 10px 0;  margin: 0 0 30px 0; border-bottom: #414141 solid 3px; }
+.myqna .info {height:28px;}
+.myqna .info .article {float:left;font-size:12px;font-family:gothic,dotum;color:#c0c0c0;padding:5px 0 0 5px;}
+.myqna .info .category {float:right;}
+.myqna table {width:100%;border-spacing:0px;border-collapse:collapse; table-layout:fixed}
+.myqna table caption {display:none;}
+.myqna thead th {height:28px;border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px; font-size:12px;font-family:dotum;font-weight:normal;color:#787878; line-height: 35px;height: 35px;}
+.myqna thead .side1 {border-left:#D2D2D2 solid 1px;}
+.myqna thead .side2 {border-right:#D2D2D2 solid 1px;}
+.myqna tbody td {text-align:center;color:#888888;font-family:arial;font-size:12px;border-bottom:#E6E6E6 solid 1px;letter-spacing:-1px; line-height: 35px;height: 35px;}
+.myqna .cat {font-size:12px;font-family:gothic,gulim;color:#888;letter-spacing:-1px;}
+.myqna .sbj {text-align:left;letter-spacing:-1px; text-overflow:ellipsis; overflow:hidden}
+.myqna .sbj a {font-size:12px;font-family:gulim;color:#222222;text-decoration:none;}
+.myqna .sbj a:hover {text-decoration:underline;}
+.myqna .sbj .new {color:#ff0000;}
+.myqna .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:12px;font-family:gothic,gulim;color:#222222;}
+.myqna .pagebox01 {text-align:center;padding:15px 0 0 0;}
+.myqna .none {display:none;}
+
+.myqna ul#kin_kind_list { margin-bottom: 15px;  }
+.myqna ul#kin_kind_list li {display: inline-block; padding: 5px 10px; margin-left: 10px; float: left; border: solid 1px #ddd; cursor: pointer; border-radius: 5px; height: 20px; line-height: 20px; font-size: 12px; font-family: '돋움';}
+.myqna ul#kin_kind_list li:hover, .myqna ul#kin_kind_list li.active { border: solid 1px #fec55a; cursor: pointer;}

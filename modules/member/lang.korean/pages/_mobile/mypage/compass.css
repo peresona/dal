@@ -1,0 +1,23 @@
+#compass {padding:20px 20px 30px 20px;min-width: 350px;}
+#compass h2 { font-size: 20px; padding: 0 0 10px 0;  margin: 0 0 15px 0; border-bottom: #414141 solid 3px; }
+#compass .info {height:40px;}
+#compass .info .article {float:left;font-size:12px;font-family:gothic,dotum;color:#c0c0c0;padding:5px 0 0 5px;}
+#compass .info .category {float:right;}
+#compass table {width:100%;border-spacing:0px;border-collapse:collapse;}
+#compass table caption {display:none;}
+#compass thead th {height:28px;border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px; font-size:12px;font-family:dotum;font-weight:normal;color:#787878; line-height: 35px;height: 35px;}
+#compass thead .side1 {border-left:#D2D2D2 solid 1px;}
+#compass thead .side2 {border-right:#D2D2D2 solid 1px;}
+#compass tbody td {text-align:center;color:#888888;font-family:arial;font-size:12px;border-bottom:#E6E6E6 solid 1px;letter-spacing:-1px; line-height: 35px;height: 35px;}
+#compass .cat {font-size:12px;font-family:gothic,gulim;color:#888;letter-spacing:-1px;}
+#compass .sbj {text-align:left;padding:5px 0 3px 10px;letter-spacing:-1px;}
+#compass .sbj a {font-size:12px;font-family:gulim;color:#222222;text-decoration:none;}
+#compass .sbj a:hover {text-decoration:underline;}
+#compass .sbj .new {color:#ff0000;}
+#compass .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:12px;font-family:gothic,gulim;color:#222222;}
+#compass .pagebox01 {text-align:center;padding:15px 0 0 0;}
+#compass .none {display:none;}
+
+#compass ul#kin_kind_list { margin-bottom: 15px; }
+#compass ul#kin_kind_list li {display: inline-block; padding: 5px 10px; margin-left: 10px; float: left; border: solid 1px #ddd; cursor: pointer; border-radius: 5px; height: 30px; line-height: 20px; font-size: 12px; }
+#compass ul#kin_kind_list li:hover, #compass ul#kin_kind_list li.active { border: solid 1px #fec55a; cursor: pointer;}

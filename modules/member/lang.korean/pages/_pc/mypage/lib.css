@@ -1,0 +1,10 @@
+	#page_main {padding: 20px 0 50px 55px}
+
+	.tabMenuBtn .btn.tabBtn {width: 33.3%; height: 40px; box-sizing: border-box; float: left;
+    line-height: 40px; font-size: 20px; border: solid 1px orange;
+    background-color: #FFF; color: orange; border-right: none;}
+    .tabMenuBtn .btn.tabBtn.last {border-right: solid 1px orange;}
+    .tabMenuBtn .btn.tabBtn:hover,.tabMenuBtn .btn.tabBtn.active {background-color: orange; color:#FFF;}
+	
+	.tabKeyword {width: 200px; height: 34px; line-height: 34px; font-size: 16px; box-sizing: border-box; border:solid 1px #999; color: #999; padding: 0 5px; }
+	.tabSubmit {padding: 0 10px; height: 34px; box-sizing: border-box; background: transparent; border:solid 1px #999; color: #999; cursor: pointer;}

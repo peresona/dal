@@ -1,0 +1,22 @@
+#applylist {padding:0 0 30px 0;}
+#applylist select {box-sizing: border-box; height: 30px; line-height: 30px;}
+#applylist .info {height:28px;}
+#applylist .info .article {float:left;font-size:13px;color:#c0c0c0;padding:5px 0 0 5px;}
+#applylist .info .category {float:right;}
+#applylist table {width:100%;border-spacing:0px;border-collapse:collapse; margin-top: 20px;}
+#applylist table * {font-family: 돋움;}
+#applylist table caption {display:none;}
+#applylist thead th {height:28px;border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px; font-size:13px;font-weight:normal; line-height: 28px; color: #000}
+#applylist thead .side1 {border-left:#D2D2D2 solid 1px;}
+#applylist thead .side2 {border-right:#D2D2D2 solid 1px;}
+#applylist tbody td {text-align:center;font-family:arial;font-size:13px;letter-spacing:-1px; height: 35px; line-height: 35px; color: #000}
+#applylist tbody td.near {line-height: 18px; }
+#applylist tbody tr:nth-child(2n+2) td {border-bottom:#E6E6E6 solid 1px;}
+#applylist .cat {font-size:13px;color:#888;letter-spacing:-1px;}
+#applylist .sbj {text-align:left;padding:5px 0 3px 10px;letter-spacing:-1px;}
+#applylist .sbj a {font-size:13px;color:#222222;text-decoration:none;line-height:35px; height: 35px; }
+#applylist .sbj a:hover {text-decoration:underline;}
+#applylist .sbj .new {color:#ff0000;}
+#applylist .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:13px;color:#222222;line-height:150%;}
+#applylist .pagebox01 {text-align:center;padding:15px 0 0 0;}
+#applylist .none {display:none;}

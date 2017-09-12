@@ -1,0 +1,8 @@
+	#d_id_input {margin-bottom: 10px; margin:50px auto 0 auto; overflow:hidden;}
+	.gray , .gray a {  color:#999; }
+	.login_form , .login_form a {font-size: 14px; line-height: 40px; width: 420px;}
+	.login_form a:hover {color:#000;}
+	.login_form > span > input[type="checkbox"] {border:solid 1px #333; background-color: #FFF;}
+	.login_form > span.fl {margin-right:10px;}
+	.login_form > span.fr {margin-left:10px;}
+	input.btn {display: block; margin:20px auto; cursor: pointer; border:none;}

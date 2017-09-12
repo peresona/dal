@@ -1,0 +1,24 @@
+#applylist {padding:20px 20px 70px 20px;}
+#applylist input {font-size: 12px; padding: 0 4px;}
+#applylist .info {height:28px;}
+#applylist .info .article {float:left;font-size:11px;color:#c0c0c0;padding:5px 0 0 5px;}
+#applylist .info .category {float:right;}
+#applylist table {width:100%;border-spacing:0px;border-collapse:collapse; margin-top: 20px;}
+#applylist table caption {display:none;}
+#applylist thead th {height:28px;border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px;font-size:11px;font-weight:normal;color:#787878; line-height: 30px;}
+#applylist thead .side1 {border-left:#D2D2D2 solid 1px;}
+#applylist thead .side2 {border-right:#D2D2D2 solid 1px;}
+#applylist tbody td {text-align:center;color:#000;font-size:12px;border-bottom:#E6E6E6 solid 1px; line-height: 20px; height: 40px; font-family: '돋움'; }
+#applylist tbody td * {font-family: '돋움';}
+#applylist .cat {font-size:12px;color:#888;letter-spacing:-1px;}
+#applylist .sbj {text-align:left;padding:5px 0 3px 10px;letter-spacing:-1px;}
+#applylist .sbj a {font-size:12px;color:#222222;text-decoration:none;line-height:150%;}
+#applylist .sbj a:hover {text-decoration:underline;}
+#applylist .sbj .new {color:#ff0000;}
+#applylist .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:12px;color:#222222;line-height:150%;}
+#applylist .pagebox01 {text-align:center;padding:15px 0 0 0;}
+#applylist .none {display:none;}
+
+#applylist ul#kin_kind_list { margin:0 auto 5px auto; width: 360px; height: 30px;  }
+#applylist ul#kin_kind_list li {display: inline-block; padding: 5px 10px; margin-left: 10px; float: left; border: solid 1px #ddd; cursor: pointer; border-radius: 5px; height: 30px; line-height: 20px; font-size: 12px; }
+#applylist ul#kin_kind_list li:hover, #applylist ul#kin_kind_list li.active { border: solid 1px #fec55a; cursor: pointer;}

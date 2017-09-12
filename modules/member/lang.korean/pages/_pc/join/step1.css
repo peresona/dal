@@ -1,0 +1,5 @@
+#d_join_title { margin-bottom:45px; }
+
+.btn.join_select {width: 268px; height: 208px; margin:0 12px; padding:60px 0 0 0; text-align: center; font-size:28px; line-height: 37px; border:solid 1px #C4C4C4;}
+.btn.join_select:hover {border:solid 1px #FEC55A; background-color: #FEC55A}
+.btn.join_sns {width: 574px; height: 72px; margin:10px;}

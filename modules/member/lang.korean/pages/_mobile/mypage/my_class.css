@@ -1,0 +1,21 @@
+#applylist {padding:0 0 30px 0;}
+#applylist .info {height:28px;}
+#applylist .info .article {float:left;font-size:11px;color:#c0c0c0;padding:5px 0 0 5px;}
+#applylist .info .category {float:right;}
+#applylist table {width:100%;border-spacing:0px;border-collapse:collapse;}
+#applylist table caption {display:none;}
+#applylist thead th {height:28px;border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px;background:url('../../../../../../_core/image/_public/bg_list_tt.jpg');font-size:11px;font-family:dotum;font-weight:normal;color:#787878;
+    padding-top: 10px;}
+#applylist thead .side1 {border-left:#D2D2D2 solid 1px;}
+#applylist thead .side2 {border-right:#D2D2D2 solid 1px;}
+#applylist tbody td {text-align:center;color:#888888;font-family:arial;font-size:12px;border-bottom:#E6E6E6 solid 1px;letter-spacing:-1px;}
+#applylist .cat {font-size:12px;font-family:gothic,gulim;color:#888;letter-spacing:-1px;}
+#applylist .btnblue {padding: 0px 5px; line-height: 20px; height: 20px;}
+#applylist .btnblue:hover {border-color:#FEC55A; color:#FEC55A;}
+#applylist .sbj {text-align:left;padding:5px 0 3px 10px;letter-spacing:-1px;}
+#applylist .sbj a {font-size:12px;font-family:gulim;color:#222222;text-decoration:none;line-height:150%;}
+#applylist .sbj a:hover {text-decoration:underline;}
+#applylist .sbj .new {color:#ff0000;}
+#applylist .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:12px;font-family:gothic,gulim;color:#222222;line-height:150%;}
+#applylist .pagebox01 {text-align:center;padding:15px 0 0 0;}
+#applylist .none {display:none;}

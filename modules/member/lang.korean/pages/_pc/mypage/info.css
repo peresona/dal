@@ -1,0 +1,25 @@
+#pages_join { margin: 0px auto 70px auto; line-height: 30px; font-size: 12px;}
+
+
+#pages_join .btn.addcell {padding: 0 10px; height: 28px; line-height: 28px; border:solid 1px orange; color:orange;}
+#pages_join .btn.addcell:hover {border:solid 1px red; color:red;}
+
+#pages_join font {font-size: 14px;}
+#pages_join .join_cl {margin-bottom: 20px; clear: both; overflow-y: hidden;}
+#pages_join .join_cl #select_birth select{display: inline-block; width: 21%; box-sizing: border-box; border:solid 1px #E6E6E6; height: 30px; line-height: 30px; text-align: center;}
+#pages_join .join_cl .agreebox {box-sizing: border-box; width: 100%; height: 200px; padding: 5px; background-color: #F4F4F4; resize: none; border:solid 1px #F4F4F4;}
+#pages_join table {width:100%;border-spacing:0px;border-collapse:collapse;letter-spacing:-1px;border-top:#E6E6E6 solid 1px;color:#888;}
+#pages_join table caption {display:none;}
+#pages_join table thead {display:none;}
+#pages_join tbody td {padding:12px 0 12px 0;border-bottom:#E6E6E6 solid 1px;color:#888;}
+#pages_join tbody td div {padding:7px 0 0 0;line-height:150%;}
+#pages_join tbody td .remail {position:relative;top:-3px;left:-2px;color:#111;}
+#pages_join tbody td .btn {margin:1px;}
+#pages_join tbody td .hmsg {font-weight:bold;color:#ff0000;}
+#pages_join tbody td .hmsg .ok {color:#0000ff;}
+#pages_join tbody td .pw_q1 {width:400px;margin:1px;}
+#pages_join tbody td .pw_q2 {width:395px;}
+#pages_join .key {font-weight:bold;padding-left:20px;width:150px;color:#111;}
+#pages_join .key span {font-weight:normal;font-size:12px;font-family:arial;color:#ff0000;padding:0 0 0 5px;}
+#pages_join .submitbox {padding:40px 0 20px 0;text-align:center;}
+#pages_join .submitbox input {height:30px;margin:0 2px 0 2px;padding:0 10px 0 10px;font-weight:bold;}

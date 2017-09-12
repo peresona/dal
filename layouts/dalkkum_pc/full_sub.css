@@ -1,0 +1,16 @@
+
+	body { padding-top: 123px !important; }
+	/* 서브 중간 배너 */
+	article.d_sub_midcell {background-color:#f4f4f4; height: 300px; margin-bottom: 50px; }
+
+	/* 서브 페이지 */
+	article #d_sub_content { margin:34px auto 34px auto; min-height: 500px; }
+	article #d_sub_content > #d_sub_content_main { margin:60px auto 80px auto; }
+
+	/* 하단 배너 */
+	article.border-top { border-top: solid 1px #d9d9d9;}
+	#d_copyright_title {margin:80px 0 50px 0; }
+	#foot_banner {height: 60px; overflow-y:hidden; margin-bottom:80px;}
+	#foot_banner > ul > li {display:inline-block; margin:0 10px; height: 60px;}
+	#foot_banner > ul.foot_banner > li > a {display: block; width: 100%; height: 100%;}
+	#foot_banner > ul.foot_banner > li > a > img {width:auto; max-height:58px;}

@@ -1,0 +1,51 @@
+	#page_main { width: 100%; margin:0 auto; padding: 20px;}
+
+	.gline {border: solid 1px #73BE08;}
+
+	.findTitle { width: 40%; background-color: #FFF; height: 40px; line-height: 40px; font-size: 14px; border: solid 1px #dfdfdf; margin-top: 20px; color: #999;}
+	.findTitle.active { background-color: #f4f4f4; border-bottom: solid 1px #f4f4f4; color: #000; font-weight: bold; }
+
+	.kin_search { background-color: #f4f4f4; margin-top:-1px; border: solid 1px #dfdfdf; height: 62px; padding: 15px 15px; }
+	.kin_search input[type="text"] {padding: 0 10px; width:calc(100% - 70px);height:32px;font-size:12px;border:solid 1px #73BE08; font-size: 13px;}
+
+	#kin_search2_2 {display: none;}
+	ul#kin_kind_list { margin-top: 15px; }
+	ul#kin_kind_list li {display: inline-block; padding: 5px 10px; margin-left: 10px; float: left; border: solid 1px #ddd; cursor: pointer; border-radius: 5px; height: 30px; line-height: 20px; font-size: 12px; }
+	ul#kin_kind_list li:hover, ul#kin_kind_list li.active { border: solid 1px #fec55a; cursor: pointer;}
+
+
+	#compass {margin:auto; padding:15px 0 30px 0;}
+	#compass .info {height:28px; clear: both;}
+	#compass .info .article {float:left;font-size:11px;font-family:gothic,dotum;color:#c0c0c0;padding:5px 0 0 5px;}
+	#compass .info .article a {position:relative;top:3px;left:3px;}
+	#compass .info .category {float:right;padding:0 0 5px 0;}
+	#compass .info .category select {padding:1px;margin-bottom:3px;}
+	#compass .info .category select .sline {color:#c0c0c0;}
+	#compass .info .category a {position:relative;top:3px;left:-5px;}
+	#compass table {width:100%;border-spacing:0px;border-collapse:collapse; table-layout:fixed}
+	#compass table caption {display:none;}
+	#compass thead th {height:28px; line-height:28px; border-top:#D2D2D2 solid 1px;border-bottom:#D2D2D2 solid 1px;font-size:11px;font-family:dotum;font-weight:normal;color:#787878;}
+	#compass thead .side1 {border-left:#D2D2D2 solid 1px;}
+	#compass thead .side2 {border-right:#D2D2D2 solid 1px;}
+	#compass tbody .noticetr td {background:url('');background:#FAFAFA;border-bottom:#EBEBEB solid 1px;}
+	#compass tbody .noticetr td a {font-weight:bold;}
+	#compass tbody td {text-align:center;color:#888888;font-family:arial;font-size:13px;border-bottom:#E6E6E6 solid 1px;letter-spacing:-1px; height: 54px; line-height: 18px;text-overflow:ellipsis; overflow:hidden}
+	#compass .now {color:#ff0000;font-size:11px;}
+	#compass .cat {font-size:12px;font-family:gothic,gulim;color:#888;letter-spacing:-1px;}
+	#compass .sbj {text-align:left;padding:5px 0 3px 10px;letter-spacing:0px;}
+	#compass .sbj .imgpos {margin-bottom:-1px;}
+	#compass .sbj a {font-size:12px;font-family:gothic,gulim;color:#222222;text-decoration:none;line-height:150%;}
+	#compass .sbj a:hover {text-decoration:underline;}
+	#compass .sbj .new {color:#ff0000;}
+	#compass .sbj .comment {font:normal 11px arial;color:#FC6138;}
+	#compass .sbj .trackback {font:normal 11px arial;color:#02ACD6;}
+	#compass .sbj1 {text-align:left;padding:5px 0 3px 10px;font-size:12px;font-family:gothic,gulim;color:#222222;height: 35px; line-height: 35px;}
+	#compass .name {color:#222222;font-family:dotum;font-size:12px;color:#888;}
+	#compass .name a {color:#888;}
+	#compass .hit {font-size:13px;color:#515190;}
+	#compass .bottom {padding:15px 0 30px 0; margin-top: 15px 0 30px 0; width: 100%;}
+	#compass .btnbox1 {float:left; width:80px;}
+	#compass .btnbox2 {float:right;width:80px;text-align:right;}
+	#compass .pagebox01 {text-align:center;padding:3px 0 0 0;margin:0 auto;}
+	#compass .searchform {padding:30px 0 0 0;text-align:center;}
+	#compass .searchform select {font-size:12px;font-family:gulim;height:20px;vertical-align:bottom;padding:2px;}
