@@ -1,0 +1,54 @@
+Array
+(
+    [0] => Array
+        (
+            [0] => <input type="hidden" name="company_id" value="dalkkum1110">
+            [1] => <input type="hidden" name="client_key" value="d43327898fa8d0c89514ec738e583bef">
+            [2] => <input type="hidden" name="url_success1" value="http://app.dalkkum.net/?m=dalkkum&a=app_upload_video2&act=success">
+            [3] => <input type="hidden" name="url_error1" value="http://app.dalkkum.net/?m=dalkkum&a=app_upload_video2&act=fail">
+            [4] => <input type="hidden" name="charset" value="utf-8">
+            [5] => <input type="hidden" name="class_code" value="48482">
+            [6] => <input type="hidden" name="origin_file_key" value="f8bf2328e60afd6a4147a1793f42452c">
+            [7] => <input type="hidden" name="file_key_W" value="zbDuD3X10NquiE-SlijyHBafmGNGaG3LIrOVCKh5Urc%2A">
+            [8] => <input type="hidden" name="file_key_I" value="wSIL9Swjj2vFJkK--jOwW82z3qWYO4KQ1kqwwbCztaQ%2A">
+            [9] => <input type="hidden" name="file_key_A" value="yo7WOENuzm-VO3e18yLOXYlHEoKHj_iAa3SKShCGt0s%2A">
+            [10] => <input type="hidden" name="file_key" value="a7v4VBXvXR1DAuido_7u0M4vSDQm2kLcUaXaRikR3qw%2A">
+            [11] => <input type="hidden" name="r_img" value="http://play.smartucc.kr/flash_response/thumbnail_view.php?k=a7v4VBXvXR1DAuido_7u0M4vSDQm2kLcUaXaRikR3qw%2A">
+            [12] => <input type="hidden" name="result" value="SUCCESS">
+        )
+
+    [1] => Array
+        (
+            [0] => company_id
+            [1] => client_key
+            [2] => url_success1
+            [3] => url_error1
+            [4] => charset
+            [5] => class_code
+            [6] => origin_file_key
+            [7] => file_key_W
+            [8] => file_key_I
+            [9] => file_key_A
+            [10] => file_key
+            [11] => r_img
+            [12] => result
+        )
+
+    [2] => Array
+        (
+            [0] => dalkkum1110
+            [1] => d43327898fa8d0c89514ec738e583bef
+            [2] => http://app.dalkkum.net/?m=dalkkum&a=app_upload_video2&act=success
+            [3] => http://app.dalkkum.net/?m=dalkkum&a=app_upload_video2&act=fail
+            [4] => utf-8
+            [5] => 48482
+            [6] => f8bf2328e60afd6a4147a1793f42452c
+            [7] => zbDuD3X10NquiE-SlijyHBafmGNGaG3LIrOVCKh5Urc%2A
+            [8] => wSIL9Swjj2vFJkK--jOwW82z3qWYO4KQ1kqwwbCztaQ%2A
+            [9] => yo7WOENuzm-VO3e18yLOXYlHEoKHj_iAa3SKShCGt0s%2A
+            [10] => a7v4VBXvXR1DAuido_7u0M4vSDQm2kLcUaXaRikR3qw%2A
+            [11] => http://play.smartucc.kr/flash_response/thumbnail_view.php?k=a7v4VBXvXR1DAuido_7u0M4vSDQm2kLcUaXaRikR3qw%2A
+            [12] => SUCCESS
+        )
+
+)

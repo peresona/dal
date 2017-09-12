@@ -1,0 +1,2 @@
+<?php if(substr($_SERVER["HTTP_HOST"], 0,4)=="www.") $domains = substr($_SERVER["HTTP_HOST"], 4); else $domains = $_SERVER["HTTP_HOST"];
+if($domains == "dreamclass.co.kr"){	getLink('http://www.dalkkum.net/?c=apply','','','');}?>
