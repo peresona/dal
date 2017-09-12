@@ -1,32 +1,12 @@
 <?php
 if(!defined('__KIMS__')) exit;
 
-
-$token = "70d37c011d68e4e886bc544b8763aa42c6456b2afb3feeb2d4fca71192be796b";
- 
-$apnsPort = 2195;
- 
-// dev
-$apnsHost = 'gateway.sandbox.push.apple.com';
-$apnsCert = 'apns-dev.pem';
- 
-// production
-//$apnsHost = 'gateway.push.apple.com';
-//$apnsCert = 'apns-production.pem';
- 
-$streamContext = stream_context_create();
-stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
- 
-$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT, $streamContext);
-if ($apns) {
-    $payload['aps'] = array('alert' => 'Oh hai!', 'badge' => 1, 'sound' => 'default');
-    $output = json_encode($payload);
-    $token = pack('H*', str_replace(' ', '', $token));
-    $apnsMessage = chr(0) . chr(0) . chr(32) . $token . chr(0) . chr(strlen($output)) . $output;
-    fwrite($apns, $apnsMessage);
- 
-    fclose($apns);
+$sql = getDbSelect('rb_dalkkum_team','','*');
+while ($R = db_fetch_array($sql)) {
+	$tmp_num = getDbRows('rb_dalkkum_apply','class_'.$R['class_time'].'='.$R['uid']);
+	echo $R['uid'].'/'.$R['class_time'].'/'.$tmp_num.'<br>';
+	getDbUpdate('rb_dalkkum_team','nows='.$tmp_num,'uid='.$R['uid']);
 }
-echo "끝";
+getLink('','','수강신청 인원과 현재 신청 인원이 동기화되었습니다.','');
 exit;
 ?>

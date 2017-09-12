@@ -30,28 +30,6 @@ $_MH = array_merge(getDbData($table['s_mbrdata'],"memberuid='".$_MH['uid']."'",'
 			포인트 : <?php echo number_format($_MH['point'])?> , 레벨 : <?php echo $_MH['level']?>
 			</div>
 
-			<div class="btnbox">
-			<?php if($my['uid']):?>
-			<?php if($my['uid']==$_MH['uid']):?>
-			<a class="btnGray01 plusBlue filter"><i><s>Follow</s></i></a>
-			<?php else:?>
-			<?php $ISF = getDbData($table['s_friend'],'my_mbruid='.$my['uid'].' and by_mbruid='.$_MH['uid'],'uid')?>
-			<?php if($ISF['uid']):?>
-			<a href="<?php echo $g['s']?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_unfollow&amp;fuid=<?php echo $ISF['uid']?>&amp;mbruid=<?php echo $_MH['uid']?>" class="btnGray01 plusBlue" onclick="return hrefCheck(this,true,'정말로 Unfollow 하시겠습니까?');"><i><s>Unfollow</s></i></a>
-			<?php else:?>
-			<?php $ISF = getDbData($table['s_friend'],'my_mbruid='.$_MH['uid'].' and by_mbruid='.$my['uid'],'uid')?>
-			<a href="<?php echo $g['s']?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_follow&amp;fuid=<?php echo $ISF['uid']?>&amp;mbruid=<?php echo $_MH['uid']?>" class="btnGray01 plusBlue" onclick="return hrefCheck(this,true,'정말로 Follow 하시겠습니까?');"><i><s>Follow</s></i></a>
-			<?php endif?>
-			<?php endif?>
-
-			<img src="<?php echo $g['img_core']?>/_public/btn_msg.gif" alt="메세지" class="hand" onclick="getLayerBox('<?php echo $g['s']?>/?r=<?php echo $r?>&system=popup.papersend&iframe=Y&type=send&rcvmbr=<?php echo $_MH['uid']?>','메세지 보내기',300,270,event,true,'b');" />
-			<?php else:?>
-			<a class="btnGray01 plusBlue filter"><i><s>Follow</s></i></a>
-			<img src="<?php echo $g['img_core']?>/_public/btn_msg.gif" alt="메세지" class="filter" />
-			<?php endif?>
-			<img src="<?php echo $g['img_core']?>/_public/btn_tool.gif" alt="SNS" class="hand" onclick="getLayerBox('<?php echo $g['s']?>/?r=<?php echo $r?>&system=popup.sns&iframe=Y&rcvmbr=<?php echo $_MH['uid']?>','소셜 네트워크',300,150,event,true,'b');" />
-		</div>
-
 
 		</div>
 		<div class="clear"></div>

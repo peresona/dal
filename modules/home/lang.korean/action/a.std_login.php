@@ -26,17 +26,17 @@ $is_std = getDbData('rb_dalkkum_applyable',$_where,'*');
 unset($_where);
 if (!$is_std)
 {
-	getLink('','','인증에 실패하였습니다. 다시 확인 후 인증해주세요. (에러코드 : 1)','');
+	getLink('','','인증에 실패하였습니다. 다시 확인 후 인증해주세요. (해당 학생정보가 DB에 없습니다.)','');
 }
 
-
+/*
 // 전화번호가 있다면 검사 없다면 등록
 if($is_std['tel']) {
 	if(($is_std['tel'] != $std_info['tel']) && (str_replace('-', "", $is_std['tel']) != str_replace('-',"",$std_info['tel']))) getLink('','','인증에 실패하였습니다. 다시 확인 후 인증해주세요. (에러코드 : 3)','');
 }else{
 	getDbUpdate('rb_dalkkum_applyable','tel="'.$std_info['tel'].'"','uid='.$is_std['uid']);
 }
-
+*/
 // 이메일이 있다면 검사, 없다면 등록
 if($is_std['email']) {
 	if($is_std['email'] != $std_info['email']) getLink('','','메일 주소가 틀렸습니다.','');

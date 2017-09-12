@@ -25,27 +25,40 @@ else {
 	$M1 = getDbData($table['s_mbrdata'],'memberuid='.$M['uid'],'*');
 }
 
-if (!$M['uid'] || $M1['auth'] == 4)
-{
-	getLink('','','존재하지 않는 아이디입니다.',$history);
-}
-if ($M1['auth'] == 2)
-{
-	getLink('','','회원님은 인증보류 상태입니다.',$history);
-}
-if ($M1['auth'] == 3)
-{
-	getLink('','','회원님은 이메일 인증대기 상태입니다.',$history);
-}
-if ($M['pw'] != md5($pw) && $M1['tmpcode'] != md5($pw))
-{
-	getLink('','','패스워드가 일치하지 않습니다.',$history);
+if(strpos($_SERVER['HTTP_USER_AGENT'],'iPhone')){
+	if (!$M['uid'] || $M1['auth'] == 4) $msg = '존재하지 않는 아이디입니다.';
+	if ($M1['auth'] == 2) $msg = '회원님은 인증보류 상태입니다.';
+	if ($M1['auth'] == 3) $msg = '회원님은 이메일 인증대기 상태입니다.';
+	if ($M['pw'] != md5($pw) && $M1['tmpcode'] != md5($pw)) $msg = '패스워드가 일치하지 않습니다.';
+	if ($usertype == 'admin') $msg = '회원님은 관리자가 아닙니다.';
+	if ($msg){
+		echo '<script>alert("'.$msg.'"); history.go(-1);</script>';
+		exit;
+	} 
+}else{
+	if (!$M['uid'] || $M1['auth'] == 4)
+	{
+		getLink('','','존재하지 않는 아이디입니다.',$history);
+	}
+	if ($M1['auth'] == 2)
+	{
+		getLink('','','회원님은 인증보류 상태입니다.',$history);
+	}
+	if ($M1['auth'] == 3)
+	{
+		getLink('','','회원님은 이메일 인증대기 상태입니다.',$history);
+	}
+	if ($M['pw'] != md5($pw) && $M1['tmpcode'] != md5($pw))
+	{
+		getLink('','','패스워드가 일치하지 않습니다.',$history);
+	}
+
+	if ($usertype == 'admin')
+	{
+		if (!$M1['admin']) getLink('','','회원님은 관리자가 아닙니다.',$history);
+	}
 }
 
-if ($usertype == 'admin')
-{
-	if (!$M1['admin']) getLink('','','회원님은 관리자가 아닙니다.',$history);
-}
 
 $my_level = $M1['level'];
 $num_login = $M1['num_login']+1;
@@ -92,7 +105,7 @@ getDbUpdate($table['s_referer'],'mbruid='.$M['uid'],"d_regis like '".$date['toda
 
 if ($idpwsave == 'checked')
 {
-	setcookie('svshop', $id.'|'.$pw, time()+60*60*24*30, '/');
+	setcookie('svshop', $id.'|'.$pw, time()+60*60*24*300000, '/');
 }
 else {
 	setcookie('svshop', '', 0, '/');
@@ -109,11 +122,11 @@ $opendir = opendir($ffolder);
 while(false !== ($file = readdir($opendir)))
 {	
 	if(!is_file($ffolder.$file)) continue;
-	
-	if($fmktile -  filemtime($ffolder.$file) > 2592000 ) 
-	{
-		unlink($ffolder.$file);
-	}
+	// 로그인 세션 지우기 삭제 - 지속 로그인을 위해
+	 if($fmktile -  filemtime($ffolder.$file) > 2592000000 ) 
+	 {
+	 	//unlink($ffolder.$file);
+	 }
 }
 closedir($opendir);
 
