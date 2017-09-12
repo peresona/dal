@@ -130,30 +130,15 @@
 	<tr>
 		<td class="key">지도 주소<span>*</span></td>
 		<td>
-			<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-			<script src="/static/locationpicker.jquery.min.js"></script>
-			<input type="hidden" id="addr_lat" name="addr_lat">
-			<input type="hidden" id="addr_long" name="addr_long">
-			<input type="text" id="address" name="address" style="width: 550px;" value="<?=$addr_address?>"><br>
-			<input type="text" id="address_detail" name="address_detail" style="width: 550px;" placeholder="상세주소"
-			 value="<?=$M['address_detail']?>">
-			<div id="grp_map" style="width: 550px; height: 400px;"></div>
-			<script>
-			    $('#grp_map').locationpicker({
-					location: {
-					latitude: <?=($M['addr_lat']?$M['addr_lat']:'37.49789009883285')?>,
-					longitude: <?=($M['addr_long']?$M['addr_long']:'127.02757669561147')?>
-					},
-					radius: 0,
-					<?php if($M['addr_lat']) echo "zoom: 18," ?>
-					inputBinding: {
-					latitudeInput: $('#addr_lat'),
-					longitudeInput: $('#addr_long'),
-					locationNameInput: $('#address')
-					},
-					enableAutocomplete: true
-				});
-			</script>
+
+					<input type="hidden" id="addr_lat" name="addr_lat" value="<?=$M['addr_lat']?>">
+					<input type="hidden" id="addr_long" name="addr_long" value="<?=$M['addr_long']?>">
+					<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력  예) 서울 삼성동 152-67" autocomplete="off">
+					<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
+    				<div id="grp_map" style="width: 600px; height: 400px;"></div>
+					<input type="text" id="address" class="d_form_underline" name="address"  style="width: 600px;" readonly="readonly" placeholder="주소 (지도 위 검색 후 자동 기입)"  value="<?=$M['address']?>"><br>
+					<input type="text" id="address_detail" class="d_form_underline" name="address_detail"  style="width: 600px;" placeholder="상세주소"
+					 autocomplete="off" value="<?=$M['address_detail']?>">
 		</td>
 	</tr>
 	<?php endif?>
@@ -853,6 +838,9 @@ $(document).ready(function(){
 //]]>
 </script>
 
-
-
-
+<script>
+	var default_lat = '<?=$M['addr_lat']?>';
+	var default_long = '<?=$M['addr_long']?>';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>

@@ -1,6 +1,6 @@
 <?php 
 	if(!$job && $bid && $uid){
-		$_temp = getDbData('rb_bbs_data','bbsid="kin" and uid='.$uid,'*');
+		$_temp = getDbData('rb_bbs_data','uid='.$uid,'*');
 		$job = $_temp['job_seq'];
 		getLink('/jblog/kin/?job='.$job.'&uid='.$uid,'','','','replace');
 	}
@@ -50,7 +50,7 @@
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/copyright.php';?>
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/drawer.php';?>
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/modal.php';?>
-<script>
+<!-- <script>
 	function fanReload(kind){
 		if(kind == "follow") {
 			alert('해당 멘토의 팬이 되셨습니다!');
@@ -61,4 +61,4 @@
 			$('#fanbtn').html('<a href="<?php echo $g[s]?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_follow&amp;mode=mblog&amp;fuid=<?php echo $ISF[uid]?>&amp;mbruid=<?php echo $_MH[uid]?>" class="btn edit cp" onclick="return hrefCheck(this,true,\'정말로 Follow 하시겠습니까?\');"><span class="btn edit cp">팬 되기</span></a>');
 		}
 	}
-</script>
+</script> -->

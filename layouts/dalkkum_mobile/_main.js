@@ -202,8 +202,8 @@ function popup_mentor(mentor_num) {
                 $('[data-inhtml="modal_mentor_nameline"]').html("Loading");
                 $('[data-inhtml="modal_mentor_intro"]').html("Loading");
                 $('[data-inhtml="modal_mentor_career"]').html("Loading");
-                $('[data-inhtml="modal_mentor_fanbtn_follow"]').prop('href', '/?r=home&m=member&a=friend_follow&mode=mblog&fuid=&mbruid=' + mentor_num);
-                $('[data-inhtml="modal_mentor_fanbtn_unfollow"]').prop('href', '/?r=home&m=member&a=friend_unfollow&mode=mini&fuid=' + datas.fuid + '&mbruid=' + mentor_num);
+                    $('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').attr('data-fuid',mentor_num);
+                    $('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').attr('onclick','fan_follow('+mentor_num+');');
                 $('[data-inhtml="modal_mentor_moreinfo"]').prop('href', '/mblog/?mentor=' + mentor_num);
                 $('[data-mentornum]').val(mentor_num);
                 // 사진 변경
@@ -221,15 +221,14 @@ function popup_mentor(mentor_num) {
                 if(datas.i_video) $('[data-inhtml="modal_mentor_video"]').html('<iframe width="100%" height="240" src="http://play.smartucc.kr/player.php?origin='+datas.i_video+'" frameborder="0" allowfullscreen></iframe>');
 
                 // 팬 버튼
-                if (datas.fanmode == "Y") {
-                    $('[data-inhtml="modal_mentor_fanbtn"]').addClass('active');
-                    $('[data-inhtml="modal_mentor_fanbtn"]').removeClass('me');
-                } else if (datas.fanmode == "N") {
-                    $('[data-inhtml="modal_mentor_fanbtn"]').removeClass('active');
-                    $('[data-inhtml="modal_mentor_fanbtn"]').removeClass('me');
-                } else if (datas.fanmode == "me") {
-                    $('[data-inhtml="modal_mentor_fanbtn"]').removeClass('active');
-                    $('[data-inhtml="modal_mentor_fanbtn"]').addClass('me');
+                if(datas.fanmode == "Y")    {
+                    $('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').show().val("- 팬 해제");
+                }
+                else if(datas.fanmode == "N")   {
+                    $('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').show().val("+ 팬 되기");
+                }
+                else if(datas.fanmode == "me") { 
+                    $('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').hide();
                 }
 
 
@@ -337,6 +336,30 @@ function inMyLib(option,option2,guid,target){
     });
 }
 
+
+// 팬 추가
+function fan_follow(fuid){
+    var form_data = {
+        act: 'follow',
+        fuid: fuid
+    };
+    $.ajax({
+        type: "POST",
+        url: "/?r=home&m=member&a=fan",
+        data: form_data,
+        success: function(response) {
+            var results = $.parseJSON(response);
+                if(results.code=='101') {
+                    $('input[data-role="follow"][data-fuid="'+fuid+'"]').val("- 팬 해제");
+                    $('span[data-role="follow"][data-fuid="'+fuid+'"]').text("- 팬 해제");
+                } else if(results.code=='102') {
+                    $('input[data-role="follow"][data-fuid="'+fuid+'"]').val("+ 팬 되기");
+                    $('span[data-role="follow"][data-fuid="'+fuid+'"]').text("+ 팬 되기");
+                }
+                if(results.msg) alert(results.msg);
+        }
+    });
+}
 
 
 $(document).mouseup(function(e) {

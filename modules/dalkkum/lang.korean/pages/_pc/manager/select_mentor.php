@@ -1,7 +1,10 @@
 <?php
 	if(!defined('__KIMS__') || !$group) exit;
 	checkAdmin(0);
-	$_SCD = db_query("select M.*, R.uid as RUID, R.agree, R.push_date, if(R.group_seq=".$group.",1,0) as firsts from rb_s_mbrdata as M left join rb_dalkkum_request as R on R.mentor_seq=M.memberuid and R.group_seq=".$group." where M.mentor_confirm='Y' order by  field(R.agree,'Y','N') desc ,firsts desc, R.uid asc ",$DB_CONNECT);
+	$_SCD = db_query("select M.*, R.uid as RUID, R.agree, R.push_date, if(R.group_seq=".$group.",1,0) as firsts 
+from rb_s_mbrdata as M 
+left join rb_dalkkum_request as R on R.mentor_seq=M.memberuid and R.group_seq=".$group."
+where M.mentor_confirm='Y' order by firsts desc, field(R.agree,'Y','N') desc , R.uid asc",$DB_CONNECT);
 	print_r($FLArray);
 	$NUM = db_num_rows($_SCD);
 ?>
@@ -54,7 +57,7 @@
 							<td>
 							<?php if($SCD['firsts']>0 && $SCD['agree']=="Y"):?><font style="color:blue; font-weight:bold;">수락</font>
 							<?php elseif($SCD['firsts']>0 && $SCD['agree']=="N"):?><font style="color:red; font-weight:bold;">거절</font>
-							<?php elseif($SCD['firsts']>0 && $SCD['agree']=="M"):?><font style="color:red; font-weight:bold;">무응답</font>
+							<?php elseif($SCD['firsts']>0 && $SCD['agree']=="M"):?><font style="color:red; font-weight:bold;">마감</font>
 							<?php elseif($SCD['firsts']>0):?><font style="color:green; font-weight:bold;">요청중</font><?php endif; ?></td>
 						</tr>
 					<?php endwhile; ?>

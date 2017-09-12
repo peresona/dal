@@ -3,8 +3,9 @@
     <!-- Demo styles -->
     <style>
     .swiper-container {
-        width: 1200px;
+        width: 1080px;
         height: 183px;
+        padding: 0 40px;
    		margin: 40px auto 20px auto;
         
     }
@@ -120,7 +121,7 @@
 					<?php endif;?>
 					<li class="btn"><a href="/?mod=apply_event" onclick="return confirm('교육 요청은 학교(진로부장님)나 기관 담당자 분께서 직접 작성해 주셔야 하며, 개인적으로 교육을 요청할 경우에는 학생수와 시간에 따라 교육료는 변경될 수 있습니다.');">교육요청</a></li>
 					<li class="btn"><a href="/apply/">수강신청</a></li>
-					<li class="btn"><a href="/cs/">교육문의</a></li>
+					<li class="btn"><a href="/cs/">문의</a></li>
 				</ul>
 			</div>
 		</div>
@@ -134,7 +135,7 @@
 			<div class="inner_wrap">
 				<div class="cl center"><font class="title_bold"><?=($my['name']?$my['name']:'비회원')?></font><font class="title">님 추천멘토</font><br> <font class="title_text">달꿈을 빛내주시는 훌륭한 멘토님들입니다!</font></div>
 			</div>
-			<div class="cl">
+			<div class="cl" style="padding: 0 20px;">
 				    <!-- Swiper -->
 			    <div class="swiper-container">
 			        <div class="swiper-wrapper">
@@ -159,8 +160,8 @@
 			        <!-- Add Pagination -->
 			        <div class="swiper-pagination"></div>
 			        <!-- Add Arrows -->
-			        <div class="swiper-button-next" style="background: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+CjxnPgoJPHBhdGggZD0iTTM2MC43MzEsMjI5LjA3NWwtMjI1LjEtMjI1LjFjLTUuMy01LjMtMTMuOC01LjMtMTkuMSwwcy01LjMsMTMuOCwwLDE5LjFsMjE1LjUsMjE1LjVsLTIxNS41LDIxNS41ICAgYy01LjMsNS4zLTUuMywxMy44LDAsMTkuMWMyLjYsMi42LDYuMSw0LDkuNSw0YzMuNCwwLDYuOS0xLjMsOS41LTRsMjI1LjEtMjI1LjFDMzY1LjkzMSwyNDIuODc1LDM2NS45MzEsMjM0LjI3NSwzNjAuNzMxLDIyOS4wNzV6ICAgIiBmaWxsPSIjMDAwMDAwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==) center center; background-size: cover;"></div>
-			        <div class="swiper-button-prev" style="background: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+CjxnPgoJPHBhdGggZD0iTTE0NS4xODgsMjM4LjU3NWwyMTUuNS0yMTUuNWM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMXMtMTMuOC01LjMtMTkuMSwwbC0yMjUuMSwyMjUuMWMtNS4zLDUuMy01LjMsMTMuOCwwLDE5LjFsMjI1LjEsMjI1ICAgYzIuNiwyLjYsNi4xLDQsOS41LDRzNi45LTEuMyw5LjUtNGM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMUwxNDUuMTg4LDIzOC41NzV6IiBmaWxsPSIjMDAwMDAwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==) center center; background-size: cover;"></div>
+			        <div class="swiper-button-next" style="background: url(<?=$g['img_layout']?>/main_mentor_prev.svg) center center; background-size: cover;"></div>
+			        <div class="swiper-button-prev" style="background: url(<?=$g['img_layout']?>/main_mentor_next.svg) center center; background-size: cover;"></div>
 			    </div>
 
 			</div>
@@ -210,7 +211,7 @@
 				else $_thumbimg=getUploadImage($_BBS['upload'],$_BBS['d_regis'],$_BBS['content'],$d['theme']['picimgext']);?>
 					<div class="time_pic pr" style="background: url(<?=$_thumbimg?$_thumbimg:'/_core/image/msg/noimage.png'?>) no-repeat center center #ddd;<?php if($_thumbimg): ?> background-size: cover; <?php endif; ?>"><?php if($_BBS['file_key_I']):?><div class="pa" style="top: 50%; left: 50%; margin: -35px 0 0 -35px; "><img src="<?=$g['img_layout']?>/play.png" width="70" height="70"></div><?php endif; ?></div>
 					<div class="time_title center">
-						<h1><?php echo getStrCut(strip_tags($_BBS['content']?$_BBS['content']:'자세히 보기'),$d['bbs']['sbjcut'],'')?></h1>
+						<h1><?php echo getStrCut($_BBS['subject'],$d['bbs']['sbjcut'],'')?></h1>
 						<h4><?=getDateFormat($_BBS['d_regis'],'Y.m.d H:i')?></h4>
 						<span class="midline"></span>
 						댓글 <?=$_BBS['comment']?> | 모두보기
@@ -235,7 +236,7 @@
 			  <area shape="rect" coords="9,212,127,255" href="/intro/" alt="달꿈은?" />
 			  <area shape="circle" coords="433,122,64" href="/intro/" alt="달꿈소개" />
 			  <area shape="circle" coords="610,182,64" href="/apply/" alt="수강신청" />
-			  <area shape="circle" coords="804,87,64" href="/review/" alt="교육후기" />
+			  <area shape="circle" coords="804,87,64" href="/review/" alt="달꿈 소식" />
 			  <area shape="circle" coords="1125,181,64" href="/intro/#map" alt="달꿈오시는길" />
 			</map>
 		</div>

@@ -9,6 +9,7 @@ if($act=='changeMentor'){
 	}
 		$jobD = getDbData('rb_s_mbrdata','memberuid='.$mid,'mentor_job');
 		$QVAL = "mentor_seq='".$mid."',job_seq='".$jobD['mentor_job']."'";
+		getDbUpdate('rb_dalkkum_team',$QVAL,'uid='.$tid);
 		echo "<script>top.okfunc();</script>";
 		exit;
 }

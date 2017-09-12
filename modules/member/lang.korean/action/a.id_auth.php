@@ -18,7 +18,7 @@ if ($d['member']['login_emailid'])
 	$R = getDbData($table['s_mbrid'],"id='".$email."'",'*');
 	if (!$R['uid'])
 	{
-		getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.(1)','');
+		getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.','');
 	}
 	$M = getDbData($table['s_mbrdata'],'memberuid='.$R['uid'],'*');
 }
@@ -26,14 +26,14 @@ else {
 	$M = getDbData($table['s_mbrdata'],"email='".$email."'",'*');
 	if (!$M['email'])
 	{
-		getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.(2)','');
+		getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.','');
 	}
 	$R = getUidData($table['s_mbrid'],$M['memberuid']);
 }
 
-if (trim($M['name']) != trim($name))
+if ($M['name'] != $name)
 {
-	getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.(3)','');
+	getLink('','','입력하신 정보로 일치하는 회원데이터가 없습니다.','');
 }
 if ($M['tmpcode'])
 {

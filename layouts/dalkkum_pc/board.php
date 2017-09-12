@@ -13,7 +13,7 @@
 		<article class="d_sub_midcell cl white" style="background-color: #fec55a">
 			<div class="cl inner_wrap" style="height:260px; padding:20px 0; ">
 				<div class="fl" style="margin-right: 40px;"><img src="<?=$g['img_layout']?>/review_head.png" width="232" height="231" alt="수강신청"></div>
-				<div class="fl white" style="padding-top: 45px;"><span class="htitle">교육후기</span><br>
+				<div class="fl white" style="padding-top: 45px;"><span class="htitle">달꿈 소식</span><br>
 					<span class="htitle3">‘달꿈’은 “멈추지 않고 달릴 수 있는 꿈을 위한 동력을 전달한다”는 이념을 따라 <br>
 아이들의 꿈을 위한 진로, 진학 전문 멘토링을 운영하고 있습니다.</span>
 				</div>

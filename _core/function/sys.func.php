@@ -398,4 +398,19 @@ function class_price($mbruid, $programUid){
 		$price_list = getUidData('rb_dalkkum_program',$programUid);
 		return ($MBRD['mentor_grade']?$price_list['price'.$gradeName[$MBRD['mentor_grade']]]:0);
 }
+
+// 경위도로 거리구하기
+function getDistance($lat1, $lng1, $lat2, $lng2, $floor='')
+{
+    $earth_radius = 6371;
+    $dLat = deg2rad($lat2 - $lat1);
+    $dLon = deg2rad($lng2 - $lng1);
+    $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2);
+    $c = 2 * asin(sqrt($a));
+    $d = $earth_radius * $c;
+    if($floor) $e = number_format($d,$floor).'km';
+    if($d > 1000) $e = '미기입';
+    return $e;
+}
+
 ?>

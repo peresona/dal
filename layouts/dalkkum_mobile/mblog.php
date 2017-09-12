@@ -51,7 +51,7 @@
 				<?php $mlist = array('mblog/qna','mblog/timeline','mblog/interview');?>
 				<li<?php if(!in_array($c, $mlist)):?> class="active"<?php endif; ?>><a href="/mblog/?mentor=<?=$PD['memberuid']?>">프로필</a></li>
 				<li<?php if($c=='mblog/interview'):?> class="active"<?php endif; ?>><a href="/mblog/interview/?mentor=<?=$PD['memberuid']?>">인터뷰</a></li>
-				<li<?php if($c=='mblog/timeline'):?> class="active"<?php endif; ?>><a href="/mblog/timeline/?mentor=<?=$PD['memberuid']?>">직업이야기</a></li>
+				<li<?php if($c=='mblog/timeline'):?> class="active"<?php endif; ?>><a href="/mblog/timeline/?mentor=<?=$PD['memberuid']?>">멘토이야기</a></li>
 				<li<?php if($c=='mblog/qna'):?> class="active"<?php endif; ?>><a href="/mblog/qna/?mentor=<?=$PD['memberuid']?>">1:1 게시판</a></li>
 			</ul>
 		</div>

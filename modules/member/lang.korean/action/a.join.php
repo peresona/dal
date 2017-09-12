@@ -43,6 +43,16 @@ if($d['member']['form_nic'])
 	}
 }
 
+$is		= trim($is);
+if($is == "mentor"){
+	if(trim($addr_lat) == '37.49789009883285' || $addr_long == '127.02757669561151') getLink('','','멘토 위치를 지도에서 선택해주세요.',''); 
+	if(!trim($mentor_job)) getLink('','','직업을 선택해주세요.',''); 
+	if(!trim($m_time)) getLink('','','강의 가능 일시를 입력해주세요.',''); 
+	if(!trim($m_talk)) getLink('','','멘토의 한마디를 입력해주세요.',''); 
+	if(!trim($i_1) || !trim($i_2) || !trim($i_3) || !trim($i_4) || !trim($i_5)) getLink('','','멘토 인터뷰를 모두 입력해주세요.',''); 
+	if(!trim($agree_1) || !trim($agree_2)) getLink('','','약관에 동의해주세요.',''); 
+
+}
 getDbInsert($table['s_mbrid'],'site,id,pw',"'$s','$id','".md5($pw1)."'");
 $memberuid  = getDbCnt($table['s_mbrid'],'max(uid)','');
 $auth		= $d['member']['join_auth'];
@@ -103,7 +113,6 @@ $sc_parent_name		= trim($sc_parent_name);
 $sc_parent_tel		= $sc_parent_tel_1 && $sc_parent_tel_2 && $sc_parent_tel_3 ? $sc_parent_tel_1 .'-'. $sc_parent_tel_2 .'-'. $sc_parent_tel_3 : '';
 
 /* 멘토 정보 */
-$is		= trim($is);
 if($is == "mentor"){
 	$mentor = array();
 	$mentor_kinds = array('edu','career','cert','prize','teaching');
@@ -119,14 +128,6 @@ if($is == "mentor"){
 	$mentor['abletime'] = $m_time;
 	$mentor['talk'] = $m_talk;
 	$mentor['intro'] = $m_intro;
-
-
-	if (!trim($i_1) || !trim($i_2) || !trim($i_3) || !trim($i_4) || !trim($i_5)) getLink('','','인터뷰를 모두 기입해주세요.','');
-
-	if (!$mentor['abletime']) getLink('','','가능 시간을 기입해주셔야합니다.','');
-	if (!$mentor['talk']) getLink('','','멘토의 한마디를 기입해주셔야합니다.','');
-	if (!$mentor['intro']) getLink('','','자기소개를 기입해주셔야합니다.','');
-
 	$mentor_apply = $d_regis;
 }
 
@@ -155,14 +156,16 @@ if (is_uploaded_file($i_tmpname))
 	}
 
 	$wh = getimagesize($i_tmpname);
-	if ($wh[0] > 1024 || $wh[1] > 768)
-	{
-		getLink('','','가로 1024픽셀 세로 768픽셀 미만이어야 합니다.','');
-	}
 
 	include_once $g['path_core'].'function/thumb.func.php';
 
 	move_uploaded_file($i_tmpname,$i_saveFile1);
+
+	if ($wh[0] > 1024 || $wh[1] > 768)
+	{
+		ResizeWidth($i_saveFile1,$i_saveFile1,1024);
+	}
+
 	ResizeWidth($i_saveFile1,$i_saveFile2,360);
 	@chmod($i_saveFile1,0707);
 	@chmod($i_saveFile2,0707);
@@ -253,13 +256,11 @@ if (is_uploaded_file($tmpname))
 	}
 
 	$wh = getimagesize($tmpname);
+	include_once $g['path_core'].'function/thumb.func.php';
 	if ($wh[0] < 180 || $wh[1] < 180)
 	{
-		getLink('','','가로/세로 180픽셀 이상이어야 합니다.','');
+		ResizeWidth($saveFile1,$saveFile1,180);
 	}
-
-	include_once $g['path_core'].'function/thumb.func.php';
-
 	move_uploaded_file($tmpname,$saveFile2);
 	ResizeWidth($saveFile2,$saveFile2,180);
 	ResizeWidthHeight($saveFile2,$saveFile1,50,50);

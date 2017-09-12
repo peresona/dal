@@ -142,30 +142,15 @@
 				<div class="fl"><font class="black">멘토 위치</font></div>
 		</div>
 		<div class="cl">
-			<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-			<script src="/static/locationpicker.jquery.min.js"></script>
-			<input type="hidden" id="addr_lat" name="addr_lat">
-			<input type="hidden" id="addr_long" name="addr_long">
-			<input type="text" id="address" class="d_form_underline" name="address" style="width: 550px;" value="<?=$addr_address?>"><br>
-			<input type="text" id="address_detail" class="d_form_underline" name="address_detail" style="width: 550px;" placeholder="상세주소"
-			 value="<?=$my['address_detail']?>">
+			<input type="hidden" id="addr_lat" name="addr_lat" value="<?=$my['addr_lat']?>">
+			<input type="hidden" id="addr_long" name="addr_long" value="<?=$my['addr_long']?>">
+			<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력  예) 서울 삼성동 152-67" autocomplete="off">
+			<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
 			<div id="grp_map" style="width: 907px; height: 400px;"></div>
-			<script>
-			    $('#grp_map').locationpicker({
-					location: {
-					latitude: <?=($my['addr_lat']?$my['addr_lat']:'37.49789009883285')?>,
-					longitude: <?=($my['addr_long']?$my['addr_long']:'127.02757669561147')?>
-					},
-					radius: 0,
-					<?php if($my['addr_lat']) echo "zoom: 18," ?>
-					inputBinding: {
-					latitudeInput: $('#addr_lat'),
-					longitudeInput: $('#addr_long'),
-					locationNameInput: $('#address')
-					},
-					enableAutocomplete: true
-				});
-			</script>
+			<input type="text" id="address" class="d_form_underline" name="address" style="width: 550px;" value="<?=$my['address']?>" readonly="readonly" placeholder="주소 (지도 위 검색 후 자동 기입)"><br>
+			<input type="text" id="address_detail" class="d_form_underline" name="address_detail" style="width: 550px;" placeholder="상세주소"
+			 value="<?=$my['address_detail']?>" autocomplete="off">
+
 		</div>
 	</div>
 	<div id="mentor_job" class="join_cl">
@@ -173,7 +158,7 @@
 				<div class="fl"><font class="black">직업</font></div>
 		</div>
 		<div class="cl">
-			<input type="text" name="m_jobview" placeholder="우측 검색하기 버튼을 눌러 선택해주세요." class="d_form_underline" readonly="" value="<?=getJobName($my['mentor_job'])?>" style="width:40%" />
+			<input type="text" name="m_jobview" placeholder="우측 검색하기 버튼을 눌러 선택해주세요." class="d_form_underline center" readonly="" value="<?=getJobName($my['mentor_job'])?>" style="width:40%" />
 			<input type="hidden" name="mentor_job" readonly="" value="<?=$my['mentor_job']?>"  />
 			<input onclick="window.open('<?php echo $g['s']?>/?r=home&iframe=Y&m=dalkkum&front=search', 'myWindow', 'width=200, height=100'); " type="button" class="btnblue" value="변경하기">
 		</div>
@@ -535,6 +520,7 @@ function del_pic(obj, what, msg){
 }
 
 $(document).ready(function(){
+
 	$('[data-addcell]').on('click',function(){
 		var mode = $(this).data('addcell');
 		var inwhat, placeholder;
@@ -561,7 +547,10 @@ $(document).ready(function(){
 //]]>
 </script>
 
-
-
-
+<script>
+	var default_lat = '<?=$my["addr_lat"]?>';
+	var default_long = '<?=$my["addr_long"]?>';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>
 

@@ -3,16 +3,20 @@
 if($argv[1] != 'persona') exit; // php crons.php persona 명령어로 실행
 
 // 아이폰 푸시 전송
-function apns_send($regId, $subject, $sendMsg) {
-$sendMsg = urldecode($sendMsg);
-if(strlen($sendMsg) > 108) { // 안드로이드와 달리 자릿수 제한이 짧다. $payload 바이트가 128Byte가 안되게 해주자.
-$sendMsg = substr($sendMsg, 0, 105);
-$sendMsg .= "...";
-}
+function apns_send($regId) {
+// $sendMsg = urldecode($sendMsg);
+// if(strlen($sendMsg) > 108) { // 안드로이드와 달리 자릿수 제한이 짧다. $payload 바이트가 128Byte가 안되게 해주자.
+// $sendMsg = substr($sendMsg, 0, 105);
+// $sendMsg .= "...";
+// }
 // 아래의 배열은 적절히 맞게 수정하면 된다.
-$payload = array();
-$payload['aps'] = array('alert' => '달꿈에서 수업 요청이 도착하였습니다.');
-$payload['e'] = array('m' => $sendMsg);
+$payload['aps'] = array(
+	'alert' => '달꿈에서 수업 요청이 도착하였습니다.',
+    'badge' => 0,
+    'sound' => 'default'
+);
+	
+
 $push = json_encode($payload);
 $apnsCert = '/free/home/dalkkum/html/static/apns-dalkkum.pem'; // 실제 사용 cert 파일
 $streamContext = stream_context_create();
@@ -26,10 +30,8 @@ $apnsMessage = chr(0).chr(0).chr(32).@pack('H*', str_replace(' ', '', "$regId"))
 $writeResult = fwrite($apns, $apnsMessage);
 @socket_close($apns);
 fclose($apns);
-
 return $writeResult;
 }
-
 
 // 안드로이드 푸시 전송 스크립트
 function send_notification ($tokens, $message)
@@ -102,13 +104,14 @@ if (is_file($g['path_var'].'db.info.php'))
 }
 else $m = 'admin';
 
-$_goGroup = db_query("select uid,recruit from rb_dalkkum_group where push_now='Y' order by uid asc",$DB_CONNECT);
+$_goGroup = db_query("select uid,recruit,grp_lat,grp_long from rb_dalkkum_group where push_now='Y' order by uid asc",$DB_CONNECT);
 while ($GG = db_fetch_array($_goGroup)) {
 
 	$_numGroup = getDbRows('rb_dalkkum_request',"group_seq=".$GG['uid']." and agree='Y'");
 		// 인원 체크후 맞으면 while
 		if($GG['recruit'] > $_numGroup){
-			$_sql = db_query("select uid,mentor_seq from rb_dalkkum_request where group_seq=".$GG['uid']." and push_go='N' group by job_seq order by uid asc",$DB_CONNECT);
+			$_sql = db_query("select * from (select SQRT(power(".$GG['grp_lat']."-M.addr_lat,2)+power(".$GG['grp_long']."-M.addr_long,2)) as distance, uid,mentor_seq, job_seq from rb_dalkkum_request R, rb_s_mbrdata M 
+where R.mentor_seq=M.memberuid and group_seq=".$GG['uid']." and push_go='N' order by distance asc) as anv group by anv.job_seq asc",$DB_CONNECT);
 			// 검색된 결과가 없으면 로봇 종료
 			if(!mysql_num_rows($_sql)){
 				db_query("UPDATE rb_dalkkum_group SET push_now='N' WHERE uid=".$GG['uid'],$DB_CONNECT);
@@ -131,7 +134,7 @@ while ($GG = db_fetch_array($_goGroup)) {
 							}
 						}elseif($TMPMBR['mobile_dev']=='ios'){
 							// ios
-							apns_send($TMPMBR['mobile_regid'], '달꿈 수업 요청', '달꿈에서 멘토님께 수업을 요청하였습니다.');
+							apns_send($TMPMBR['mobile_regid']);
 							getDbUpdate('rb_dalkkum_request','push_go="Y", push_date="'.$date['totime'].'"','uid='.$_SQL['uid']);
 						}
 
@@ -167,7 +170,7 @@ while ($GG = db_fetch_array($_goGroup)) {
 
 			        srand((double)microtime()*1000000);
 			        $boundary = "---------------------".substr(md5(rand(0,32000)),0,10);
-			        print_r($in_sms);
+			       // print_r($in_sms);
 
 			        // 헤더 생성
 			        $msg_header = "POST /".$path ." HTTP/1.0\r\n";
@@ -228,6 +231,16 @@ while ($GG = db_fetch_array($_goGroup)) {
 
 
 }
+
+// 수강신청 인원 동기화
+$sql = getDbSelect('rb_dalkkum_team','','*');
+while ($R = db_fetch_array($sql)) {
+	$tmp_num = getDbRows('rb_dalkkum_apply','class_'.$R['class_time'].'='.$R['uid']);
+	//echo $R['uid'].'/'.$R['class_time'].'/'.$tmp_num.'<br>';
+	getDbUpdate('rb_dalkkum_team','nows='.$tmp_num,'uid='.$R['uid']);
+}
+
+
 exit;
 		
 

@@ -52,11 +52,6 @@
 	</div>
 <script>
 top.resizeTo(530,600);
-
-	window.onload = function(){
-		window.document.body.scroll = "auto";
-	}
-	
 	function select_job(title,job_num)
 	{
 		opener.document.<?=$go_form?>.<?=$go_title?>.value = title;

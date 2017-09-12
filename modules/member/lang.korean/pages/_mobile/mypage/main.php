@@ -30,7 +30,7 @@ $levelname= getDbData($table['s_mbrlevel'],'uid='.$my['level'],'*');
 			<?php while($_R=db_fetch_array($_POST)):?>
 			<?php $_R['mobile']=isMobileConnect($_R['agent'])?>
 			<li>
-			ㆍ<a href="<?php echo getPostLink($_R)?>" title="작성일시 : <?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> (조회수 : <?php echo $_R['hit']?>)" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
+			ㆍ<a href="/<?php echo getPostLink($_R)?>" title="작성일시 : <?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> (조회수 : <?php echo $_R['hit']?>)" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
 			<?php if(strstr($_R['content'],'.jpg')):?><img src="<?php echo $g['img_core']?>/_public/ico_pic.gif" class="imgpos" alt="사진" title="사진" /><?php endif?>
 			<?php if($_R['upload']):?><img src="<?php echo $g['img_core']?>/_public/ico_file.gif" class="imgpos" alt="첨부파일" title="첨부파일" /><?php endif?>
 			<?php if($_R['hidden']):?><img src="<?php echo $g['img_core']?>/_public/ico_hidden.gif" class="imgpos" alt="비밀글" title="비밀글" /><?php endif?>
@@ -50,7 +50,7 @@ $levelname= getDbData($table['s_mbrlevel'],'uid='.$my['level'],'*');
 			<?php while($_R=db_fetch_array($_POST)):?>
 			<?php $_R['mobile']=isMobileConnect($_R['agent'])?>
 			<li>
-			ㆍ<a href="<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> / 조회 <?php echo $_R['hit']?> / 공감 <?php echo $_R['score1']?> / 비공감 <?php echo $_R['score2']?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
+			ㆍ<a href="/<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> / 조회 <?php echo $_R['hit']?> / 공감 <?php echo $_R['score1']?> / 비공감 <?php echo $_R['score2']?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
 			<?php if($_R['mobile']):?><img src="<?php echo $g['img_core']?>/_public/ico_mobile.gif" class="imgpos1" alt="모바일" title="모바일(<?php echo $_R['mobile']?>)로 등록되었습니다." /><?php endif?>
 			<?php if(strstr($_R['content'],'.jpg')):?><img src="<?php echo $g['img_core']?>/_public/ico_pic.gif" class="imgpos" alt="사진" title="사진" /><?php endif?>
 			<?php if($_R['upload']):?><img src="<?php echo $g['img_core']?>/_public/ico_file.gif" class="imgpos" alt="첨부파일" title="첨부파일" /><?php endif?>
@@ -74,7 +74,7 @@ $levelname= getDbData($table['s_mbrlevel'],'uid='.$my['level'],'*');
 			<?php while($_R=db_fetch_array($_POST)):?>
 			<?php $_R['mobile']=isMobileConnect($_R['agent'])?>
 			<li>
-			ㆍ<a href="<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo $_R[$_HS['nametype']]?>님 / <?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> / 조회 <?php echo $_R['hit']?> / 공감 <?php echo $_R['score1']?>&lt;br /&gt;<?php echo getStrCut(str_replace('&nbsp;',' ',strip_tags($_R['content'])),100,'...')?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
+			ㆍ<a href="/<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo $_R[$_HS['nametype']]?>님 / <?php echo getDateFormat($_R['d_regis'],'Y.m.d H:i')?> / 조회 <?php echo $_R['hit']?> / 공감 <?php echo $_R['score1']?>&lt;br /&gt;<?php echo getStrCut(str_replace('&nbsp;',' ',strip_tags($_R['content'])),100,'...')?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_R['subject']?></a>
 			<?php if($_R['mobile']):?><img src="<?php echo $g['img_core']?>/_public/ico_mobile.gif" class="imgpos1" alt="모바일" title="모바일(<?php echo $_R['mobile']?>)로 등록되었습니다." /><?php endif?>
 			<?php if(strstr($_R['content'],'.jpg')):?><img src="<?php echo $g['img_core']?>/_public/ico_pic.gif" class="imgpos" alt="사진" title="사진" /><?php endif?>
 			<?php if($_R['upload']):?><img src="<?php echo $g['img_core']?>/_public/ico_file.gif" class="imgpos" alt="첨부파일" title="첨부파일" /><?php endif?>
@@ -96,7 +96,7 @@ $levelname= getDbData($table['s_mbrlevel'],'uid='.$my['level'],'*');
 			<?php $_R=getUidData($table['s_comment'],$_O['parent'])?>
 			<?php $_O['mobile']=isMobileConnect($_O['agent'])?>
 			<li>
-			ㆍ<a href="<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo $_O[$_HS['nametype']]?>님 / <?php echo getDateFormat($_O['d_regis'],'Y.m.d H:i')?>&lt;br /&gt;<?php echo $_O['content']?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_O['content']?></a>
+			ㆍ<a href="/<?php echo getCyncUrl($_R['cync'].',CMT:'.$_R['uid'])?>#CMT" title="<?php echo $_O[$_HS['nametype']]?>님 / <?php echo getDateFormat($_O['d_regis'],'Y.m.d H:i')?>&lt;br /&gt;<?php echo $_O['content']?>" onmouseover="qTilePop(this);" onmouseout="qTilePopKill(this);"><?php echo $_O['content']?></a>
 			<?php if($_O['mobile']):?><img src="<?php echo $g['img_core']?>/_public/ico_mobile.gif" class="imgpos1" alt="모바일" title="모바일(<?php echo $_O['mobile']?>)로 등록되었습니다." /><?php endif?>
 			<?php if(getNew($_O['d_regis'],24)):?><span class="new">new</span><?php endif?>
 			</li>

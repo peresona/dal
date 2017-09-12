@@ -22,9 +22,9 @@ if (is_uploaded_file($tmpname))
 	}
 
 	$img_data = getimagesize($tmpname);
-	if ($img_data[0] > 280 || $img_data[1] > 280)
+	if ($img_data[0] > 400 || $img_data[1] > 400)
 	{
-		getLink('','','이미지 파일은 가로 280px 세로 280px을 넘을 수 없습니다.','');
+		getLink('','','이미지 파일은 가로 400px 세로 400px을 넘을 수 없습니다.','');
 	}
 
 	if (is_file($g['path_root'].'files/_etc/foot_banner/'.$d_regis."_".$upload))

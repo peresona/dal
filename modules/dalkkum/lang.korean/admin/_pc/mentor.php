@@ -10,6 +10,7 @@ function getMDname($id)
 }
 	$_WHERE .= 'mentor_confirm="Y"';
 	if($search=='name' && $keyword)	$_WHERE .= ' and replace(name," ","") like "%'.trim($keyword).'%"';
+	if($search=='email' && $keyword) $_WHERE .= ' and replace(email," ","") like "%'.trim($keyword).'%"';
 	if($search=='jobCode' && $keyword)	$_WHERE .= ' and mentor_job='.trim($keyword);
 	$sort	= $sort ? $sort : 'memberuid';
 	$orderby= $orderby ? $orderby : 'desc';
@@ -37,8 +38,8 @@ function getMDname($id)
 				<input type="hidden" name="module" value="<?php echo $module?>" />
 				<input type="hidden" name="front" value="<?php echo $front?>" />
 				<select id="search" name="search" id="search_what">
-					<option value="">검색기준</option>
 					<option value="name"<?php if($search=='name'):?> selected="selected"<?php endif;?>>이름</option>
+					<option value="email"<?php if($search=='email'):?> selected="selected"<?php endif;?>>이메일</option>
 					<option value="jobCode"<?php if($search=='jobCode'):?> selected="selected"<?php endif;?>>직업번호</option>
 				</select>
 				<input id="keyword" type="text" name="keyword" value="<?php if($search) echo $keyword; ?>">

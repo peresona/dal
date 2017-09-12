@@ -59,36 +59,63 @@ switch ($act) {
 	case 'request_agree':
 		// 받는 값 $uid
 		if(getDbRows('rb_dalkkum_request','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and (agree="M" or agree="Y" or agree="N")')>0){
-			$alert = "이미 요청에 답하셨습니다."; 
-			getLink('','', $alert , ''); 
+			$code = "1";
+			$msg = "이미 요청에 답하셨습니다."; 
 		}
 		if(getDbRows('rb_dalkkum_request','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="N"')>0){
-			$alert = "현재 해당 수업에 동의 하실 수 없는 상태입니다."; 
-			getLink('','', $alert , ''); 
+			$code = "2";
+			$msg = "현재 해당 수업에 동의 하실 수 없는 상태입니다."; 
 		}
 		if(getDbRows('rb_dalkkum_request','job_seq='.$my['mentor_job'].' and group_seq='.$R['uid'].' and agree="Y"')>0){
-			$alert = "해당 그룹에 같은 직업이 이미 모집 완료되었습니다."; 
-			getLink('','', $alert , ''); 
+			$code = "3";
+			$msg = "해당 그룹에 같은 직업이 이미 모집 완료되었습니다."; 
+			getDbUpdate('rb_dalkkum_request','agree="M",agreeable="N"','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid']);
 		}
 
 		if($mode == 'agree'){
 			getDbUpdate('rb_dalkkum_request',"agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"');
-
-			// 해당 직업은 모집 푸시 찾아서 종료
-			getDbUpdate('rb_dalkkum_request',"agree='M',agreeable='N',push_go='C'",'job_seq='.$my['mentor_job'].' and group_seq='.$R['uid'].' and agreeable="Y"');
-
-			//echo "agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"';
-			$alert = "해당 수업을 동의를 정상적으로 처리하였습니다.";
-			getLink('reload','parent.', $alert , ''); 
+			$code = "100";
+			$msg = "해당 수업을 동의를 정상적으로 처리하였습니다.";
 		} else if($mode == 'reject'){
 			getDbUpdate('rb_dalkkum_request',"agree='N',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"');
-			echo "agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"';
-			$alert = "해당 수업을 거절을 정상적으로 처리하였습니다.";
-			getLink('reload','parent.', $alert , ''); 
+			$code = "100";
+			$msg = "해당 수업을 거절을 정상적으로 처리하였습니다.";
 		}
-		else $alert = "에러가 발생했습니다.";
-			getLink('','', $alert , ''); 
+		else { $msg = "에러가 발생했습니다.";
+			$code = "100"; }
+			echo json_encode(array('code' => $code, 'msg' => $msg)); 
+			exit;
 		break;
+	// case 'request_agree':
+	// 	// 받는 값 $uid
+	// 	if(getDbRows('rb_dalkkum_request','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and (agree="M" or agree="Y" or agree="N")')>0){
+	// 		$alert = "이미 요청에 답하셨습니다."; 
+	// 		getLink('/mypage/?page=request','parent.', $alert , ''); 
+	// 	}
+	// 	if(getDbRows('rb_dalkkum_request','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="N"')>0){
+	// 		$alert = "현재 해당 수업에 동의 하실 수 없는 상태입니다."; 
+	// 		getLink('/mypage/?page=request','parent.', $alert , ''); 
+	// 	}
+	// 	if(getDbRows('rb_dalkkum_request','job_seq='.$my['mentor_job'].' and group_seq='.$R['uid'].' and agree="Y"')>0){
+	// 		$alert = "해당 그룹에 같은 직업이 이미 모집 완료되었습니다."; 
+	// 		getDbUpdate('rb_dalkkum_request','agree="M",agreeable="N"','mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid']);
+	// 		getLink('/mypage/?page=request','parent.', $alert , ''); 
+	// 	}
+
+	// 	if($mode == 'agree'){
+	// 		getDbUpdate('rb_dalkkum_request',"agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"');
+	// 		echo "agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"';
+	// 		$alert = "해당 수업을 동의를 정상적으로 처리하였습니다.";
+	// 		getLink('reload','parent.', $alert , ''); 
+	// 	} else if($mode == 'reject'){
+	// 		getDbUpdate('rb_dalkkum_request',"agree='N',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"');
+	// 		echo "agree='Y',agreeable='N'",'mentor_seq='.$my['memberuid'].' and group_seq='.$R['uid'].' and agreeable="Y"';
+	// 		$alert = "해당 수업을 거절을 정상적으로 처리하였습니다.";
+	// 		getLink('reload','parent.', $alert , ''); 
+	// 	}
+	// 	else $alert = "에러가 발생했습니다.";
+	// 		getLink('','', $alert , ''); 
+	// 	break;
 
 }
 

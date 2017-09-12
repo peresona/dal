@@ -1,6 +1,4 @@
-
-
-<h2>직업이야기</h2>
+<h2>멘토이야기</h2>
 <div id="box_timeline">
 <!-- 반복 -->
 	<div class="time_list cp">

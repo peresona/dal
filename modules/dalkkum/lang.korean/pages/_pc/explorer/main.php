@@ -1,3 +1,4 @@
+<?php $sub = $sub?$sub:'mentor'; ?>
 		<article class="d_sub_midcell cl white" style="background:url(<?=$g['img_layout']?>/lib_bg.jpg) center top; background-size: cover;">
 			<div class="cl inner_wrap" style="padding-top:70px; text-align: center; ">
 				<span style="font-size: 60px; line-height: 100px; margin-bottom: 30px;">탐색</span><br>
@@ -7,13 +8,13 @@
 		<article>
 			<div class="inner_wrap cl d_all_jobs inner_wrap d_alls">	
 				<div class="cl center">
-					<a href="/explorer/"><span class="btn bigbtngray<?php if($sub!='mentor'):?> active<?php endif;?>">직업군</span></a>
 					<a href="/explorer/?sub=mentor"><span class="btn bigbtngray<?php if($sub=='mentor'):?> active<?php endif;?>">멘토</span></a>
+					<a href="/explorer/?sub=job"><span class="btn bigbtngray<?php if($sub=='job'):?> active<?php endif;?>">직업군</span></a>
 				</div>
 				<div class="cl tanMain center" data-tabs="3">
 					<form action="/explorer/" method="get">
 						<div class="cl" style="width: 296px; margin: 0 auto;">
-							<input type="hidden" name="sub" value="<?=($sub?$sub:'job')?>">
+							<input type="hidden" name="sub" value="<?=$sub?>">
 							<input type="text" name="keyword" class="tabKeyword fl" value="<?=$keyword?>" placeholder="키워드로 검색" style="border-right:none;">
 							<input type="submit" class="tabSubmit fl" value="검색" style="
     border: solid 1px #cc3300; color: #cc3300; ">

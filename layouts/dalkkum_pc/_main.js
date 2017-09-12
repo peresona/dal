@@ -184,8 +184,9 @@ function popup_mentor(mentor_num){
 					$('[data-inhtml="modal_mentor_video"]').html("");
 					$('[data-inhtml="modal_mentor_intro"]').html("Loading");
 					$('[data-inhtml="modal_mentor_career"]').html("Loading");
-					$('[data-inhtml="modal_mentor_fanbtn_follow"]').prop('href','/?r=home&m=member&a=friend_follow&mode=mblog&fuid=&mbruid='+mentor_num);
-					$('[data-inhtml="modal_mentor_fanbtn_unfollow"]').prop('href','/?r=home&m=member&a=friend_unfollow&mode=mini&fuid='+datas.fuid+'&mbruid='+mentor_num);
+					$('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').attr('data-fuid',mentor_num);
+					$('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').attr('onclick','fan_follow('+mentor_num+');');
+
 					$('[data-inhtml="modal_mentor_moreinfo"]').prop('href','/mblog/?mentor='+mentor_num);
 					$('[data-mentornum]').val(mentor_num);
 					// 사진 변경
@@ -203,16 +204,13 @@ function popup_mentor(mentor_num){
 
 					// 팬 버튼
 					if(datas.fanmode == "Y")	{
-						$('[data-inhtml="modal_mentor_fanbtn"]').addClass('active');
-						$('[data-inhtml="modal_mentor_fanbtn"]').removeClass('me');
+						$('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').show().val("- 팬 해제");
 					}
 					else if(datas.fanmode == "N")	{
-						$('[data-inhtml="modal_mentor_fanbtn"]').removeClass('active');
-						$('[data-inhtml="modal_mentor_fanbtn"]').removeClass('me');
+						$('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').show().val("+ 팬 되기");
 					}
 					else if(datas.fanmode == "me") { 
-						$('[data-inhtml="modal_mentor_fanbtn"]').removeClass('active');
-						$('[data-inhtml="modal_mentor_fanbtn"]').addClass('me');
+						$('[data-inhtml="modal_mentor_fanbtn"] > [data-role="follow"]').hide();
 					}
 
 
@@ -300,6 +298,31 @@ function inMyLib(option,option2,guid,target){
 				}
 				if(results.msg) alert(results.msg);
 				inMyLibAfter(results.code, $('[data-'+target+'="'+guid+'"]'));
+		}
+	});
+}
+
+
+// 팬 추가
+function fan_follow(fuid){
+	var form_data = {
+		act: 'follow',
+		fuid: fuid
+	};
+	$.ajax({
+		type: "POST",
+		url: "/?r=home&m=member&a=fan",
+		data: form_data,
+		success: function(response) {
+			var results = $.parseJSON(response);
+				if(results.code=='101') {
+					$('input[data-role="follow"][data-fuid="'+fuid+'"]').val("- 팬 해제");
+					$('span[data-role="follow"][data-fuid="'+fuid+'"]').text("- 팬 해제");
+				} else if(results.code=='102') {
+					$('input[data-role="follow"][data-fuid="'+fuid+'"]').val("+ 팬 등록");
+					$('span[data-role="follow"][data-fuid="'+fuid+'"]').text("+ 팬 등록");
+				}
+				if(results.msg) alert(results.msg);
 		}
 	});
 }

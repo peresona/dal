@@ -41,18 +41,10 @@
 				$_MH = getUidData($table['s_mbrid'],$mentor);
 				$_MH = array_merge(getDbData($table['s_mbrdata'],"memberuid='".$_MH['uid']."'",'*'),$_MH);
 			if($my['memberuid'] && $my['memberuid'] != $mentor):?>
-			<div id="fanbtn" style="float: left;">
-			<?php if($my['memberuid']!=$_MH['uid']):
-			$ISF = getDbData($table['s_friend'],'my_mbruid='.$my['memberuid'].' and by_mbruid='.$_MH['uid'],'uid');
-			if($ISF['uid']):?>
-				<a href="<?php echo $g['s']?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_unfollow&amp;mode=mblog&amp;fuid=<?php echo $ISF['uid']?>&amp;mbruid=<?php echo $_MH['uid']?>" class="btn edit cp" onclick="return hrefCheck(this,true,'정말로 해당 멘토님과의 팬 관계를 해제하시겠습니까?');"><span class="btn edit cp">팬 해제</span></a>
-			<?php else:?>
-			<?php $ISF = getDbData($table['s_friend'],'my_mbruid='.$_MH['uid'].' and by_mbruid='.$my['memberuid'],'uid')?>
-			<a href="<?php echo $g['s']?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_follow&amp;mode=mblog&amp;fuid=<?php echo $ISF['uid']?>&amp;mbruid=<?php echo $_MH['uid']?>" class="btn edit cp" onclick="return hrefCheck(this,true,'정말로 해당 멘토님의 팬이 되시겠습니까?');"><span class="btn edit cp">팬 되기</span></a>
+			<?php if($my['memberuid']!=$_MH['uid']):?>
+				<?php getWidget('fan',array('fuid'=>$mentor, 'type'=>'span', 'class'=>'btn edit cp'));?>
 			<?php endif?>
 			<?php endif?>
-			<?php endif?>
-			</div>
 				<span class="btn edit cp" onclick="location.href = '/mblog/qna/?mentor=<?=$PD[memberuid]?>';">1:1 게시판</span></div>
 			</div>
 		</div>
@@ -60,11 +52,11 @@
 	<div class="inner_wrap cl">
 		<div id="leftside_menu" class="fl">
 			<ul>
-				<?php $mlist = array('mblog/qna','mblog/timeline','mblog/interview');?>
-				<li<?php if(!in_array($c, $mlist)):?> class="active"<?php endif; ?>><a href="/mblog/?mentor=<?=$PD['memberuid']?>">프로필</a></li>
-				<li<?php if($c=='mblog/interview'):?> class="active"<?php endif; ?>><a href="/mblog/interview/?mentor=<?=$PD['memberuid']?>">인터뷰</a></li>
-				<li<?php if($c=='mblog/timeline'):?> class="active"<?php endif; ?>><a href="/mblog/timeline/?mentor=<?=$PD['memberuid']?>">직업이야기</a></li>
+				<?php $mlist = array('mblog/qna','mblog/profile','mblog/interview');?>
+				<li<?php if(!in_array($c, $mlist)):?> class="active"<?php endif; ?>><a href="/mblog/timeline/?mentor=<?=$PD['memberuid']?>">멘토이야기</a></li>
 				<li<?php if($c=='mblog/qna'):?> class="active"<?php endif; ?>><a href="/mblog/qna/?mentor=<?=$PD['memberuid']?>">1:1 게시판</a></li>
+				<li<?php if($c=='mblog/interview'):?> class="active"<?php endif; ?>><a href="/mblog/interview/?mentor=<?=$PD['memberuid']?>">인터뷰</a></li>
+				<li <?php if($c=='mblog/profile'):?> class="active"<?php endif; ?>><a href="/mblog/profile/?mentor=<?=$PD['memberuid']?>">프로필</a></li>
 			</ul>
 		</div>
 		<div id="page_main" class="fr">
@@ -75,15 +67,3 @@
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/copyright.php';?>
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/drawer.php';?>
 <?php include  $g['path_layout'].$d['layout']['dir'].'/_cross/modal.php';?>
-<script>
-	function fanReload(kind){
-		if(kind == "follow") {
-			alert('해당 멘토의 팬이 되셨습니다!');
-			$('#fanbtn').html('<a href="<?php echo $g[s]?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_unfollow&amp;mode=mblog&amp;fuid=<?php echo $ISF[uid]?>&amp;mbruid=<?php echo $_MH[uid]?>" class="btn edit cp" onclick="return hrefCheck(this,true,\'정말로 Unfollow 하시겠습니까?\');"><span class="btn edit cp">팬 해제</span></a>');
-		}
-		else if (kind=="unfollow"){
-			alert('팬이 해제되었습니다.');
-			$('#fanbtn').html('<a href="<?php echo $g[s]?>/?r=<?php echo $r?>&amp;m=member&amp;a=friend_follow&amp;mode=mblog&amp;fuid=<?php echo $ISF[uid]?>&amp;mbruid=<?php echo $_MH[uid]?>" class="btn edit cp" onclick="return hrefCheck(this,true,\'정말로 Follow 하시겠습니까?\');"><span class="btn edit cp">팬 되기</span></a>');
-		}
-	}
-</script>

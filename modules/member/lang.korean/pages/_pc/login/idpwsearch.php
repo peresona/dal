@@ -1,14 +1,15 @@
+
 <div id="pages_idpw">
 
-	<h2><?php echo $d['member']['login_emailid']?'이메일':'아이디'?> 찾기</h2>
+	<h2><?php echo $d['member']['login_emailid']?'이메일':'아이디'?>/비밀번호 찾기</h2>
 
 	<div class="msg">
 		<?php if($d['member']['login_emailid']):?>
 		이메일아이디는 회원가입시 등록한 이름(실명)과 아이디를 입력하시면 정보를 확인하실 수 있습니다.<br />
-		<!-- 비밀번호는 암호화되어 있으므로 이메일인증 후 새로운 비밀번호로 재등록하셔야 합니다. -->
+		비밀번호는 암호화되어 있으므로 이메일인증 후 새로운 비밀번호로 재등록하셔야 합니다.
 		<?php else:?>
 		아이디는 회원가입시 등록한 이름(실명)과 이메일을 입력하시면 정보를 확인하실 수 있습니다.<br />
-		<!-- 비밀번호는 암호화되어 있으므로 아이디인증 후 새로운 비밀번호로 재등록하셔야 합니다. -->
+		비밀번호는 암호화되어 있으므로 아이디인증 후 새로운 비밀번호로 재등록하셔야 합니다.
 		<?php endif?>
 	</div>
 
@@ -16,8 +17,8 @@
 		<ul>
 		<li class="lside" onclick="goHref('<?php echo $g['url_reset']?>');">로그인</li>
 		<li id="tagree1" class="selected" onclick="tabShow(1);"><?php echo $d['member']['login_emailid']?'이메일':'아이디'?> 찾기</li>
-		<!-- <li id="tagree2" onclick="tabShow(2);">비밀번호 찾기</li> -->
-		<li id="tagree2" onclick="tabShow(2);">비밀번호 요청</li>
+		<?php //<li id="tagree2" onclick="tabShow(2);">비밀번호 찾기</li> ?>
+		<li id="tagree3" onclick="tabShow(3);">비밀번호 요청</li>
 		</ul>
 	</div>
 	<div class="agreebox">
@@ -53,7 +54,9 @@
 			</form>
 
 		</div>
-<!-- 		<div id="bagree2" class="hide">
+		<div id="bagree2" class="hide">
+
+
 			<form name="procForm2" action="<?php echo $g['s']?>/" method="post" target="_action_frame_<?php echo $m?>" onsubmit="return pwCheck(this);">
 			<input type="hidden" name="r" value="<?php echo $r?>" />
 			<input type="hidden" name="m" value="<?php echo $m?>" />
@@ -141,12 +144,12 @@
 			</div>
 			</div>
 			</form>
-		</div> -->
+		</div>
 
 
-		<div id="bagree2" class="hide">
+		<div id="bagree3" class="hide">
 		
-		<form name="procForm2" action="<?php echo $g['s']?>/" method="post" target="_action_frame_<?php echo $m?>" onsubmit="return idCheck(this);">
+		<form name="procForm3" action="<?php echo $g['s']?>/" method="post" target="_action_frame_<?php echo $m?>" onsubmit="return idCheck(this);">
 		<input type="hidden" name="r" value="<?php echo $r?>" />
 		<input type="hidden" name="m" value="<?php echo $m?>" />
 		<input type="hidden" name="a" value="id_auth" />
@@ -188,18 +191,18 @@ function tabShow(n)
 {
 	var i;
 
-	for (i = 1; i < 3; i++)
+	for (i = 1; i < 4; i++)
 	{
-		getId('tagree'+i).style.borderBottom = '#dfdfdf solid 1px';
-		getId('tagree'+i).style.background = '#efefef';
-		getId('tagree'+i).style.color = '#666666';
-		getId('bagree'+i).style.display = 'none';
+		$('#tagree'+i).css('borderBottom','#dfdfdf solid 1px');
+		$('#tagree'+i).css('background','#efefef');
+		$('#tagree'+i).css('color','#666666');
+		$('#bagree'+i).css('display','none');
 	}
-	getId('tagree'+n).style.borderBottom = '#ffffff solid 1px';
-	getId('tagree'+n).style.background = '#ffffff';
-	getId('tagree'+n).style.color = '#000000';
-	getId('bagree'+n).style.display = 'block';
 
+		$('#tagree'+n).css('borderBottom','#ffffff solid 1px');
+		$('#tagree'+n).css('background','#ffffff');
+		$('#tagree'+n).css('color','#000000');
+		$('#bagree'+n).css('display','block');
 	if (n == 1)
 	{
 		document.procForm1.name.focus();

@@ -2,7 +2,7 @@
 include_once $g['dir_module_skin'].'_menu.php';
 
 	if($my['mentor_confirm']!="Y") getLink('','','멘토회원만 이용 가능한 페이지 입니다.','-1');
-	$_sql = "select T.uid, T.class_time, T.nows, G.name, G.date_start, G.date_end from rb_dalkkum_team as T, rb_dalkkum_group as G, rb_dalkkum_sclist as SC where T.group_seq = G.uid and G.sc_seq = SC.uid and T.mentor_seq=".$my['memberuid'];
+	$_sql = "select T.uid, T.class_time, T.nows, G.name, G.class_date, G.date_end from rb_dalkkum_team as T, rb_dalkkum_group as G, rb_dalkkum_sclist as SC where T.group_seq = G.uid and G.sc_seq = SC.uid and T.mentor_seq=".$my['memberuid'];
 	$_result = db_query($_sql, $DB_CONNECT);
 	$printDate = array();
 
@@ -11,7 +11,7 @@ include_once $g['dir_module_skin'].'_menu.php';
 	array_push($printDate, $_tempdate);
 
 	while ($R = db_fetch_array($_result)) {
-		$_tempdate = array('id' => $R['uid'], 'title' => $R['name'], 'start' => getDateFormat($R['date_start'],'Y-m-d\TH:i'), 'url' => $R['']);
+		$_tempdate = array('id' => $R['uid'], 'title' => $R['name'], 'start' => getDateFormat($R['class_date'],'Y-m-d\TH:i'), 'url' => $R['']);
 		array_push($printDate, $_tempdate);
 	}
 ?><style>

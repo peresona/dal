@@ -32,7 +32,7 @@
 	<div class="content">
 	<?php if($NUM>0):?>
 		<div class="list">
-		<div class="cl" style="text-align: center; margin-bottom: 10px;">이 그룹은 현재 <b>0명</b>의 멘토에게 요청이 전송되었습니다. (푸시대기 : <b>0명</b> / 수락 : <b>0명</b> / 진행중 : <b>0명</b> / 무응답 : <b>0명</b>)</div>
+		<div class="cl" style="text-align: center; margin-bottom: 10px;">이 그룹은 현재 <b>0명</b>의 멘토에게 요청이 전송되었습니다. (푸시대기 : <b>0명</b> / 수락 : <b>0명</b> / 진행중 : <b>0명</b> / 마감 : <b>0명</b>)</div>
 				<table>
 					<tr>
 						<th width="20%">이름 / 직업</th>

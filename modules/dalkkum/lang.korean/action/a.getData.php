@@ -2,15 +2,19 @@
 if(!defined('__KIMS__')) exit;
 elseif($need=='check_id'){
 	$_result = getDbRows('rb_s_mbrid',"id='".trim($id)."'");
+	$_result2 = getDbRows($table['s_mbrdata'],"id='".trim($id)."'");
 	$check_result = "0";
-	if($_result=='0') {
+	if($_result > 0) {
+		$code = "1";
+		$msg = "<font color='red'>사용할 수 없는 이메일입니다.</font>";
+	} elseif($_result2 > 0) {
+		$code = "1";
+		$msg = "<font color='red'>가입된 아이디 입니다.</font>";
+	}
+	else {
 		$code = "100";
 		$msg = "<font color='blue'>사용 가능한 아이디입니다.</font>";
 		$check_result = "1";
-	}
-	else {
-		$code = "1";
-		$msg = "<font color='red'>사용할 수 없는 이메일입니다.</font>";
 	}
 	echo urldecode(json_encode(array('code' => $code, 'msg' => $msg, 'check' => $check_result)));
 	exit;
@@ -174,13 +178,13 @@ elseif($need=='popup_job'){
 exit;
 }
 
-elseif($need=='popup_classDayDetail'){
+elseif($need=='popup_classDayDetail' && $selectDay){
 	$_results = array();
 	$_results['day_list'] = '';
-	$_sql = db_query("select T.uid, T.class_time, T.nows, G.name, G.date_start, G.date_end, G.program_seq, SC.name as scName, SC.place, T.class_time from rb_dalkkum_team as T, rb_dalkkum_group as G, rb_dalkkum_sclist as SC where T.group_seq = G.uid and G.sc_seq = SC.uid and T.mentor_seq=".$my['memberuid']." and G.date_start like '".$selectDay."%' order by G.date_start asc",$DB_CONNECT);
+	$_sql = db_query("select T.uid, T.class_time, T.nows, G.name, G.class_date, G.date_end, G.program_seq, SC.name as scName, SC.place, T.class_time from rb_dalkkum_team as T, rb_dalkkum_group as G, rb_dalkkum_sclist as SC where T.group_seq = G.uid and G.sc_seq = SC.uid and T.mentor_seq=".$my['memberuid']." and G.class_date like '".$selectDay."%' order by G.class_date asc",$DB_CONNECT);
 	while ($RD = db_fetch_array($_sql)) {
 		$_tmpd = getDbData('rb_dalkkum_program',"uid=".$RD['program_seq'],'*');
-		$_results['day_list'] .= '<li onclick="OpenWindow(\'/?r=home&iframe=Y&m=dalkkum&a=export_team&uid='.$RD['uid'].'&mode=web\')"><b>'.getDateFormat($RD['date_start'],'Y년 m월 d일').'</b>'.'('.$RD['class_time'].'교시)<br>'.$_tmpd['name'].'<br>'.$RD['scName'].'<br>'.$RD['place'].'</li>';
+		$_results['day_list'] .= '<li><b>'.getDateFormat($RD['class_date'],'Y년 m월 d일').'</b>'.'('.$RD['class_time'].'교시)<br>'.$_tmpd['name'].'<br>'.$RD['scName'].'<br>'.$RD['place'].'</li>';
 	}
 	if(!$_results['day_list']) $_results['day_list'] = '<li>표시할 목록이 없습니다.</li>';
 
@@ -317,6 +321,25 @@ elseif($need=='lib_mentors'){
 			</li>';
 	echo urldecode(json_encode(array('code' => '100', 'inhtml' => $_results, 'num' => $_num)));
 exit;
+}
+
+// 내 요청 자세히
+elseif($act=='request_detail' && $num){
+	$tmpdata = getDbData('rb_dalkkum_request as R, rb_dalkkum_group as G','R.group_seq = G.uid and R.agreeable="Y" and R.uid='.$num.' and R.mentor_seq='.$my['memberuid'],'R.uid, G.program_seq,  R.date_start, G.sc_seq,G.address');
+		$_results = $tmpdata;
+
+
+		// 가격 책정
+		$temp = array();
+		$gradeName = array('','E','D','C','B','A');
+		$price_list = getUidData('rb_dalkkum_program',$tmpdata['program_seq']);
+
+		$_results['price'] = $my['mentor_grade']?$price_list['price'.$gradeName[$my['mentor_grade']]]:0;
+
+		$_results['scName'] = getSchoolName($_results['sc_seq']);
+		$_results['date_format'] = getDateFormat($tmpdata['date_start'],'Y-m-d').'('.getWeekday(date('w',strtotime(getDateFormat($tmpdata['date_start'],'y-m-d')))).')';
+
+	echo urldecode(json_encode(array('code' => '100', 'results' => $_results))); exit;
 }
 
 

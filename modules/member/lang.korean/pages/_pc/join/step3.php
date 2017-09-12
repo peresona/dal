@@ -14,26 +14,26 @@
 
 	<h2>회원정보</h2>
 	<div class="join_cl">
-		<font class="black">이메일</font><br>
+		<font class="black">이메일</font><font class="red">*</font><br>
 		<input type="text" id="userid" name="id" class="d_form_underline" placeholder="이메일 주소를 입력해주세요" value="<?php echo getArrayCookie($_COOKIE['svshop'],'|',0)?>">
 		<div id="msg_id" class="cl red"></div>
 	</div>
 	<div class="join_cl">
 		<div class="fl" style="width:48%;">
-			<font class="black">패스워드</font><br>
+			<font class="black">패스워드</font><font class="red">*</font><br>
 			<input type="password" id="password" name="pw" class="d_form_underline" placeholder="패스워드를 입력해주세요" value="<?php echo getArrayCookie($_COOKIE['svshop'],'|',0)?>">
 		</div>
 		<div class="fr" style="width:48%;">
-			<font class="black">패스워드 확인</font><br>
+			<font class="black">패스워드 확인</font><font class="red">*</font><br>
 			<input type="password" id="password_check" name="pw2" class="d_form_underline" placeholder="패스워드를 한 번 더 입력해주세요" value="<?php echo getArrayCookie($_COOKIE['svshop'],'|',0)?>">
 		</div>
 	</div>
 	<div class="join_cl">
-		<font class="black">이름</font><br>
+		<font class="black">이름</font><font class="red">*</font><br>
 		<input type="text" name="name" value="<?php echo $regis_name?>" placeholder="이름을 입력해주세요" maxlength="10" class="d_form_underline" />
 	</div>
 	<div class="join_cl">
-		<div class="cl"> <font class="black">전화번호</font><br> </div>
+		<div class="cl"> <font class="black">전화번호</font><font class="red">*</font><br> </div>
 		<div class="cl">
 			<input type="text" name="tel2_1" value="" maxlength="3" size="4" placeholder="" class="d_form_underline center" style="width : 20%" />-
 			<input type="text" name="tel2_2" value="" maxlength="4" size="4" placeholder="" class="d_form_underline center" style="width : 20%" />-
@@ -43,7 +43,7 @@
 	</div>
 	<?php if($d['member']['form_birth']):?>
 	<div class="join_cl">
-		<div class="cl"><font class="black">생년월일</font><br></div>
+		<div class="cl"><font class="black">생년월일</font><font class="red">*</font><br></div>
 		<div id="select_birth" class="cl" style="margin-top: 10px;">
 			<select name="birth_1">
 			<option value="">선택</option>
@@ -70,7 +70,7 @@
 	<div class="join_cl">
 		<div class="cl"><font class="black">프로필 사진</font><br></div>
 		<div id="select_pic" class="cl" style="margin-top: 10px;">
-			<input type="file" name="upfile" class="upfile">
+			<input type="file" name="upfile" class="upfile" accept="image/*">
 		</div>
 	</div>
 
@@ -131,38 +131,23 @@
 	<h2>강사정보</h2>
 	<div id="mentor_address" class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">멘토 위치</font></div>
+				<div class="fl"><font class="black">멘토 위치</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-			<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-			<script src="/static/locationpicker.jquery.min.js"></script>
-			<input type="hidden" id="addr_lat" name="addr_lat">
-			<input type="hidden" id="addr_long" name="addr_long">
-			<input type="text" id="address" name="address" style="width: 550px;" value="<?=$addr_address?>"><br>
-			<input type="text" id="address_detail" name="address_detail" style="width: 550px;" placeholder="상세주소"
-			 value="<?=$my['address_detail']?>">
-			<div id="grp_map" style="width: 550px; height: 400px;"></div>
-			<script>
-			    $('#grp_map').locationpicker({
-					location: {
-					latitude: <?=($my['addr_lat']?$my['addr_lat']:'37.49789009883285')?>,
-					longitude: <?=($my['addr_long']?$my['addr_long']:'127.02757669561147')?>
-					},
-					radius: 0,
-					<?php if($my['addr_lat']) echo "zoom: 18," ?>
-					inputBinding: {
-					latitudeInput: $('#addr_lat'),
-					longitudeInput: $('#addr_long'),
-					locationNameInput: $('#address')
-					},
-					enableAutocomplete: true
-				});
-			</script>
+			<input type="hidden" id="addr_lat" name="addr_lat" value="">
+			<input type="hidden" id="addr_long" name="addr_long" value="">
+			<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력  예) 서울 삼성동 152-67" autocomplete="off">
+			<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
+			<div id="grp_map" style="width: 100%; height: 400px;"></div>
+			<input type="text" id="address" class="d_form_underline" name="address" style="width: 550px;" value="" readonly="readonly"><br>
+			<input type="text" id="address_detail" class="d_form_underline" name="address_detail" style="width: 550px;" placeholder="상세주소"
+			 value="" autocomplete="off">
+
 		</div>
 	</div>
 	<div id="mentor_job" class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">직업</font></div>
+				<div class="fl"><font class="black">직업</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
 			<input type="text" name="m_jobview" placeholder="우측 검색하기 버튼을 눌러 선택해주세요." class="d_form_underline center" readonly="" value="" style="width:60%" />
@@ -221,81 +206,80 @@
 	</div>
 	<div class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">강의 가능 일시</font></div>
+				<div class="fl"><font class="black">강의 가능 일시</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<input type="text" name="m_time" placeholder="요일, 가능시간 등으로 기록" class="d_form_underline" required="required" />
-		</div>
-	</div>
-	<div class="join_cl">
-		<div class="cl">
-				<div class="fl"><font class="black">멘토의 한마디</font></div>
-		</div>
-		<div class="cl">
-				<input type="text" name="m_talk" placeholder="한마디를 남겨주세요." class="d_form_underline" required="required" />
+				<input type="text" name="m_time" placeholder="요일, 가능시간 등으로 기록" class="d_form_underline" />
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">자기소개(멘토 등록 이유)</font></div>
+				<div class="fl"><font class="black">멘토의 한마디</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<input type="text" name="m_intro" placeholder="자기 소개를 남겨주세요." class="d_form_underline" required="required" />
+				<input type="text" name="m_talk" placeholder="한마디를 남겨주세요." class="d_form_underline" />
+		</div>
+	</div>
+	<div class="join_cl">
+		<div class="cl">
+				<div class="fl"><font class="black">자기소개(멘토 등록 이유)</font><font class="red">*</font></div>
+		</div>
+		<div class="cl">
+				<input type="text" name="m_intro" placeholder="자기 소개를 남겨주세요." class="d_form_underline" />
 		</div>
 	</div>
 	<br>
 	<h2>인터뷰</h2>
 	<div class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">1) 학창시절 가장 고민했던 것은 무엇인가?</font></div>
+				<div class="fl"><font class="black">1) 학창시절 가장 고민했던 것은 무엇인가?</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<textarea name="i_1" id="interview_1" rows="10" class="d_form_area" maxlength="300" required="required"></textarea>
+				<textarea name="i_1" id="interview_1" rows="10" class="d_form_area" maxlength="300"></textarea>
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
 				<div class="fl"><font class="black">2) 학창 시절로 돌아간다면 나는 반드시 이것을 꼭 해보고 싶다?
-</font></div>
+</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<textarea name="i_2" id="interview_2" rows="10" class="d_form_area" maxlength="300" required="required"></textarea>
+				<textarea name="i_2" id="interview_2" rows="10" class="d_form_area" maxlength="300"></textarea>
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
 				<div class="fl"><font class="black">3) 나는 지금 하는 일을 왜 하게되었는가?
-</font></div>
+</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<textarea name="i_3" id="interview_3" rows="10" class="d_form_area" maxlength="300" required="required"></textarea>
+				<textarea name="i_3" id="interview_3" rows="10" class="d_form_area" maxlength="300"></textarea>
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
 				<div class="fl"><font class="black">4) 현재 삶에서 가장 만족하고 있는 부분과 불만족스러운 부분은?
-</font></div>
+</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<textarea name="i_4" id="interview_4" rows="10" class="d_form_area" maxlength="300" required="required"></textarea>
+				<textarea name="i_4" id="interview_4" rows="10" class="d_form_area" maxlength="300"></textarea>
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
 				<div class="fl"><font class="black">5) 마지막으로 나를 롤모델로 삼은 멘티에게 꼭 해주고 싶은 말은?
-</font></div>
+</font><font class="red">*</font></div>
 		</div>
 		<div class="cl">
-				<textarea name="i_5" id="interview_5" rows="10" class="d_form_area" maxlength="300" required="required"></textarea>
+				<textarea name="i_5" id="interview_5" rows="10" class="d_form_area" maxlength="300"></textarea>
 		</div>
 	</div>
 	<div class="join_cl">
 		<div class="cl">
-				<div class="fl"><font class="black">6) 인터뷰에 들어갈 이미지를 첨부해주세요.<br>(없을 경우 기본이미지로 대체됩니다.)
-</font></div>
+				<div class="fl"><font class="black">6) 인터뷰에 들어갈 이미지를 첨부해주세요.</font></div>
 		</div>
 		<div class="cl">
-				<input type="file" name="i_pic" class="d_form_underline" />
+				<input type="file" name="i_pic" class="d_form_underline" accept="image/*" />
 		</div>
 	</div>
 	<br>
@@ -308,14 +292,14 @@
 	<div class="join_cl">
 		<textarea name="agree" id="agreebox" class="agreebox" readonly ><?php readfile($g['dir_module'].'var/agree1.txt')?></textarea>
 		<br>
-		<input type="checkbox" id="agree_1" name="agree_1" value="Y"><label for="agree_1">위의 이용약관에 동의합니다.</label>
+		<input type="checkbox" id="agree_1" name="agree_1" value="Y"><label for="agree_1">위의 이용약관에 동의합니다<font class="red">*</font></label>
 	</div>
 	<br>
 	<h2>개인정보 취급방침</h2>
 	<div class="join_cl">
 		<textarea name="agree2" id="agreebox2" class="agreebox" readonly><?php readfile($g['dir_module'].'var/agree2.txt')?></textarea>
 		<br>
-		<input type="checkbox" id="agree_2" name="agree_2" value="Y"><label for="agree_2">위의 개인정보 취급방침에 동의합니다.</label>
+		<input type="checkbox" id="agree_2" name="agree_2" value="Y"><label for="agree_2">위의 개인정보 취급방침에 동의합니다<font class="red">*</font></label>
 	</div>
 	<div class="submitbox">
 		<input type="hidden" name="hiddens" id="hiddens">
@@ -468,6 +452,12 @@ function saveCheck(f)
 
 
 <?php if($is=='mentor'):?>
+	if (f.addr_lat.value == '37.49789009883285' || f.addr_long.value == '127.02757669561151')
+	{
+		alert('멘토 지도를 선택해주세요.');
+		f.addr_lat.focus();
+		return false;
+	}
 	if (f.mentor_job.value == '')
 	{
 		alert('멘토 직업을 선택하세요.');
@@ -480,10 +470,23 @@ function saveCheck(f)
 		f.m_time.focus();
 		return false;
 	}
+	if (f.m_talk.value == '')
+	{
+		alert('멘토의 한마디를 입력해주세요.');
+		f.m_talk.focus();
+		return false;
+	}
 	if (f.m_intro.value == '')
 	{
 		alert('멘토 등록 이유를 입력해주세요.');
 		f.m_intro.focus();
+		return false;
+	}
+
+	if (f.i_1.value == '' || f.i_2.value == '' || f.i_3.value == '' || f.i_4.value == '' || f.i_5.value == '')
+	{
+		alert('인터뷰를 모두 작성해주세요.');
+		f.i_1.focus();
 		return false;
 	}
 
@@ -577,4 +580,12 @@ $(document).ready(function(){
 
 //]]>
 </script>
+
+
+<script>
+	var default_lat = '<?=$my["addr_lat"]?>';
+	var default_long = '<?=$my["addr_long"]?>';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>
 

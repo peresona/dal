@@ -20,6 +20,9 @@ elseif($act=='delete_program' && $uid){
 		getLink('/?r=home&m=admin&module=dalkkum&front=program','parent.','삭제 되었습니다.','');
 	}
 }
+if(!$priceA || !$priceB || !$priceC || !$priceD || !$priceE || !$name){
+	getLink('','','프로그램명과 등급별 가격을 필수로 입력해주세요. (시스템상 공란이 불가능합니다.) ','');
+}
 getLink('','','에러가 발생하였습니다.','');
 
 ?>

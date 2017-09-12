@@ -175,6 +175,7 @@
 			</div>
 			<div class="cl">이름<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_name" placeholder="이름을 입력해주세요." value="<?=$my['name']?>"></div>
 			<div class="cl">이메일<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_email" placeholder="이메일 주소를 입력해주세요." value="<?=$my['email']?>"></div>
+			<div class="cl">이메일 확인<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_email2" placeholder="한번 더 입력해주세요." value="<?=$my['email']?>"></div>
 			<div class="cl">전화번호<br><input type="text" class="d_form_underline" name="std_tel" placeholder="전화번호를 입력해주세요.(선택)" value="<?=$my['tel2']?>"></div>
 			<div class="cl center">
 				<input type="button" value="취소" class="modalbtn bg_gray cp" onclick="modal_closer('modal_apply');" style="background-color: #999">
@@ -210,6 +211,7 @@
 			</div>
 			<div class="cl">이름<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_name" placeholder="이름을 입력해주세요." value="<?=$my['name']?>"></div>
 			<div class="cl">이메일<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_email" placeholder="이메일 주소를 입력해주세요." value="<?=$my['email']?>"></div>
+			<div class="cl">이메일 확인<font class="red">*</font><br><input type="text" class="d_form_underline" name="std_email2" placeholder="한번 더 입력해주세요." value="<?=$my['email']?>"></div>
 			<div class="cl">전화번호<br><input type="text" class="d_form_underline" name="std_tel" placeholder="전화번호를 입력해주세요.(선택)" value="<?=$my['tel2']?>"></div>
 			<div class="cl center">
 					<input type="button" value="취소" class="modalbtn bg_gray cp" onclick="modal_closer('modal_myApplyList'); $('#d_drawer').addClass('show'); hybrid_menubar('hide'); " style="background-color: #999">
@@ -283,12 +285,11 @@ if($myRequest['RUID']):?>
     <span class="fl">강의 요청</span>
     <span class="btn fr" onclick="modal_closer('modal_request');">X</span>
     </div>
-    <div class="center modal_main" style="padding : 40px 25px; font-size: 20px; line-height: 30px; height: 240px">
-    	2016.11.21 월 09:00 ~ 10:00 <br>원곡고등학교 <br>(경기도 안산시 단원구 원곡동)<br><br><font style="font-size: 24px;">강의료 : <font color="orange">50000원</font></font>
+    <div class="center modal_main" style="padding : 40px 25px; font-size: 20px; line-height: 30px; height: 240px" data-inhtml="modal_agree_content">데이터 로딩중
     </div>
     <div class="cl center" style="height:40px; margin-bottom: 40px; ">
-    	<a href="#" target="_action_frame_<?=$m?>" data-inhtml="modal_agree_agree" onclick="return confirm('이 강의 요청을 수락하시겠습니까?');"><input type="button" class="btn orangebtn" value="수 락"></a>
-    	<a href="#" target="_action_frame_<?=$m?>" data-inhtml="modal_agree_reject" onclick="return confirm('이 강의 요청을 거절하시겠습니까?'); "><input type="button" class="btn graybtn" value="거 절"></a>
+    	<input type="button" class="btn orangebtn" value="수 락" data-inhtml="modal_agree_agree">
+    	<input type="button" class="btn graybtn" value="거 절" data-inhtml="modal_agree_reject">
     </div>
   </div>
 </div>
@@ -358,12 +359,7 @@ endif; ?>
 			</div>
 			<div data-inhtml="modal_mentor_fanbtn" class="cl center">
 			<?php if($my['memberuid']):?>
-				<a data-inhtml="modal_mentor_fanbtn_follow" class="btn edit cp" onclick="return hrefCheck(this,true,'정말로 해당 멘토님의 팬이 되시겠습니까?');">
-				<input type="button" class="btnblue cl fanbtn" value="+ 팬 되기" style="width: 100px;">
-				</a>
-				<a data-inhtml="modal_mentor_fanbtn_unfollow" class="btn edit cp" onclick="return hrefCheck(this,true,'정말로 해당 멘토님과의 팬 관계를 해제하시겠습니까?');">
-				<input type="button" class="btnblue cl outbtn" value="- 팬 해제" style="width: 100px;">
-				</a>
+				<input type="button" class="btnblue cl" value="+ 팬 되기" style="width: 100px;" data-role="follow" data-fuid="">
 			<?php endif; ?>
 				<a data-inhtml="modal_mentor_moreinfo"><input type="button" class="btnblue cl" value="자세히 보기" style="width: 100px;"></a>
 				<input type="hidden" data-mentornum="" value="">
@@ -400,20 +396,64 @@ endif; ?>
 <script>
 //<![CDATA[
 
-function class_request(sel){
+function class_request(rno, sel){
+	var form_data = {
+		act: 'request_detail',
+		num: rno
+	};
+	$.ajax({
+		type: "POST",
+		url: "/?r=home&m=dalkkum&a=getData",
+		data: form_data,
+		success: function(response) {
+			results = JSON.parse(response);
+			if(results.code == '100'){
+				var res = results.results;
+				var inhtml = res.date_format+'<br>'+res.scName+'<br>('+res.address+')<br><br><font style="font-size: 24px;">강의료 : <font color="orange">'+res.price+'원</font></font>';
+				$('[data-inhtml="modal_agree_content"]').html(inhtml);
+			}
+		}
+	});
+
 	url="/?r=<?=$r?>&m=dalkkum&a=actionGroup&uid="+sel+"&act=request_agree&mode=agree";
 	url2="/?r=<?=$r?>&m=dalkkum&a=actionGroup&uid="+sel+"&act=request_agree&mode=reject";
-	$('[data-inhtml="modal_agree_agree"]').prop('href',url);
-	$('[data-inhtml="modal_agree_reject"]').prop('href',url2);
+	var onclick1 = "if(confirm('이 강의 요청을 수락하시겠습니까?')) class_request_select('"+sel+"','agree');";
+	var onclick2 = "if(confirm('이 강의 요청을 거절하시겠습니까?')) class_request_select('"+sel+"','reject');";
+	$('[data-inhtml="modal_agree_agree"]').attr('onclick',onclick1);
+	$('[data-inhtml="modal_agree_reject"]').attr('onclick',onclick2);
 	$('#modal_request').show();
 }
-
+function class_request_select(sel, mode){
+	var form_data = {
+		uid: sel,
+		act: 'request_agree',
+		mode: mode
+	};
+	$.ajax({
+		type: "POST",
+		url: "/?r=home&m=dalkkum&a=actionGroup",
+		data: form_data,
+		success: function(response) {
+			results = JSON.parse(response);
+			if(results.msg) alert(results.msg);
+			if(results.code == '100'){
+				location.reload();
+			 }
+		}
+	});
+}
 function stdLoginCheck(f)
 {
 	if (f.sc_name.value == '' || f.std_grade.value == '' || f.std_class.value == '' || f.std_num.value == '' || f.std_name.value == '')
 	{
 		alert('학생 정보를 모두 기입해주세요.');
 		f.sc_name.focus();
+		return false;
+	}
+	if (f.std_email.value != f.std_email2.value)
+	{
+		alert('이메일이 이메일 확인과 일치하지 않습니다.');
+		f.std_email2.focus();
 		return false;
 	}
 

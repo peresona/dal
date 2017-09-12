@@ -74,7 +74,8 @@ for($_i=1; $_i<=$R['select_hour']; $_i++){
 		<div class="notice">
 			수강신청을 등록합니다. 수강신청 '시작' 버튼을 누른 이후에는 메인에서 유저들이 수강신청을 할 수 있는 상태가 되며, 멘토 및 인원 수를 수정 불가능합니다. <br>
 			수강신청 그룹을 등록한 후에 멘토 모집이 가능합니다. <br>
-			<font color="blue">수강신청 시작 이 후 그룹 정보 수정이 필요 할 땐, 초기화 버튼을 이용하여 지원학생들을 초기화하면 다시 수정 할 수 있는 상태가 됩니다.</font>
+			<font color="blue">수강신청 시작 이 후 그룹 정보 수정이 필요 할 땐, 초기화 버튼을 이용하여 지원학생들을 초기화하면 다시 수정 할 수 있는 상태가 됩니다.</font><br>
+			<font color="red">인원에 오류가 있을땐 인원 동기화 버튼을 눌러주시면 동기화됩니다.</font>
 		</div>
 		<table>
 			<tr>
@@ -188,6 +189,7 @@ for($_i=1; $_i<=$R['select_hour']; $_i++){
 					<input type="text" name="available" value="<?=$ABLE_NUM?>명" class="input" readonly />
 					<input type="hidden" name="sc_seq" value="<?=$R['sc_seq']?>" class="input" readonly />
 					<input type="button" class="btnblue" value="가능인원관리" onclick="javascript:OpenWindow('/?r=home&iframe=Y&m=dalkkum&front=manager&page=insert_student&group=<?=$R['uid']?>');" />
+					<a href="/?r=home&m=dalkkum&a=etcAction&act=sync_num" target="_action_frame_admin"><input type="button" class="btnblue" value="인원 동기화" /></a>
 					<?php else:?>수강신청 생성 후 학생을 추가 하실 수 있습니다.<?endif?>
 				</td>
 			</tr>
@@ -288,29 +290,15 @@ for($_i=1; $_i<=$R['select_hour']; $_i++){
 			<tr>
 				<td class="td1">위치</td>
 				<td class="td2">
-					<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-    				<script src="static/locationpicker.jquery.min.js"></script>
-    				<input type="hidden" id="grp_lat" name="grp_lat">
-    				<input type="hidden" id="grp_long" name="grp_long">
-    				<input type="text" id="grp_address" name="address" style="width: 600px;"><br>
-    				<input type="text" id="grp_address2" name="address_detail" style="width: 600px;" placeholder="상세주소" value="<?=$R['address_detail']?>">
+
+					<input type="hidden" id="addr_lat" name="grp_lat" value="<?=$R['grp_lat']?>">
+					<input type="hidden" id="addr_long" name="grp_long" value="<?=$R['grp_long']?>">
+					<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력  예) 서울 삼성동 152-67" autocomplete="off">
+					<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
     				<div id="grp_map" style="width: 600px; height: 400px;"></div>
-					<script>
-					    $('#grp_map').locationpicker({
-    location: {
-        latitude: <?=($R['grp_lat']?$R['grp_lat']:'37.49789009883285')?>,
-        longitude: <?=($R['grp_long']?$R['grp_long']:'127.02757669561147')?>
-    },
-    radius: 0,
-    <?php if($R['grp_lat']) echo "zoom: 18," ?>
-    inputBinding: {
-        latitudeInput: $('#grp_lat'),
-        longitudeInput: $('#grp_long'),
-        locationNameInput: $('#grp_address')
-    },
-    enableAutocomplete: true
-});
-					</script>
+					<input type="text" id="address" class="d_form_underline" name="address"  style="width: 600px;" readonly="readonly" placeholder="주소 (지도 위 검색 후 자동 기입)"  value="<?=$R['address']?>"><br>
+					<input type="text" id="address_detail" class="d_form_underline" name="address_detail"  style="width: 600px;" placeholder="상세주소"
+					 autocomplete="off" value="<?=$R['address_detail']?>">
 				</td>
 			</tr>
 			<tr>
@@ -353,7 +341,7 @@ for($_i=1; $_i<=$R['select_hour']; $_i++){
 							<option value="<?=sprintf('%02d',$i)?>"<?php if(substr($R['end_'.$e],10,2)==sprintf('%02d',$i)):?> selected="selected"<?php endif;?>><?=sprintf('%02d',$i)?></option>
 						<?php endfor;?>
 					</select>
-					<?php if($R['uid'] && $R['apply_start']!="Y"):?>
+					<?php if($R['uid']):?>
 					<input type="button" class="btnblue" value="멘토 선택" onclick="select_mentor_window('<?=$e?>','select_mentor','select_mentor2');"/><br>
 					<input type="hidden" name="mentor_name_<?=$e?>" value="<?=$_ment[0]?>" class="input sname" readonly />
 					<input type="hidden" name="mentor_<?=$e?>" value="<?=$_ment[1]?>" class="input" readonly />
@@ -468,23 +456,16 @@ function open_apply(applyUID){
 						$('select[name="class_day"]').val(inputin.start_date_d);
 						$('select[name="select_hour"]').val(inputin.many_times);
 
-						$('#grp_map').locationpicker({
-						    location: {
-						        latitude: inputin.a_lat,
-						        longitude: inputin.a_long
-						    },
-							radius: 0,
-						    <?php if($R['grp_lat']) echo "zoom: 18," ?>
-						    inputBinding: {
-						        latitudeInput: $('#grp_lat'),
-						        longitudeInput: $('#grp_long'),
-						        locationNameInput: $('#grp_address')
-						    }
-						});
+
+		                map.setCenter(new daum.maps.LatLng(inputin.a_lat, inputin.a_long));
+		                marker.setPosition(new daum.maps.LatLng(inputin.a_lat, inputin.a_long));
+
+		                $('#addr_lat').val(inputin.a_lat);
+		                $('#addr_long').val(inputin.a_long);
 
 						show_times($('select[name="select_hour"]').val());
-						$('input#grp_address').val(inputin.address);
-						$('input#grp_address2').val(inputin.address_detail);
+						$('input#address').val(inputin.address);
+						$('input#address_detail').val(inputin.address_detail);
 
 						for (var i = 0; i < inputin.many_times ; i++) {							
 							$('select#start'+(i+1)+'_1').val(results.result.a_times[i][0]);
@@ -522,3 +503,9 @@ $(document).ready(function(){
 });
 //]]>
 </script>
+<script>
+	var default_lat = '<?=$R['grp_lat']?>';
+	var default_long = '<?=$R['grp_long']?>';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>

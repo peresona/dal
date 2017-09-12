@@ -14,6 +14,16 @@ elseif($act == 'reset_jblog_mentor' && $job_seq){
 }
 
 // 직업블로그 멘토 지정
+elseif($act == 'sync_num'){
+	checkAdmin(0);
+	$sql = getDbSelect('rb_dalkkum_team','','*');
+	while ($R = db_fetch_array($sql)) {
+		$tmp_num = getDbRows('rb_dalkkum_apply','class_'.$R['class_time'].'='.$R['uid']);
+		echo $R['uid'].'/'.$R['class_time'].'/'.$tmp_num.'<br>';
+		getDbUpdate('rb_dalkkum_team','nows='.$tmp_num,'uid='.$R['uid']);
+	}
+	getLink('','','수강신청 인원과 현재 신청 인원이 동기화되었습니다.','');
+}
 elseif($act == 'regis_jblog_mentor' && $job_seq){
 	checkAdmin(0);
 	$_tmptext = "";
@@ -67,6 +77,7 @@ elseif($act == 'del_video' && $file_key_W && $andfuc){
 	echo "<script>parent.".$andfuc."();</script>";
 	exit;
 }
+
 
 getLink('','','에러가 발생하였습니다.','');
 

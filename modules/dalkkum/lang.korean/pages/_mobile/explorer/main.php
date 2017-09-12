@@ -1,3 +1,4 @@
+<?php $sub = $sub?$sub:'mentor'; ?>
 <div class="cl" style="padding: 20px 0px;">
 	<div class="cl center" style="padding: 0 10px 20px 10px ;">
 					<form name="searching" action="/explorer/" method="get">
@@ -18,7 +19,7 @@
 					</form>
 	</div>
 
-	<?php if($sub == 'job' || !$sub):?>
+	<?php if($sub == 'job'):?>
 	<div class="cl bl center" style="font-size: 20px;">직업</div>
 	<div class="cl tanMain">
 		<div class="cl">
@@ -48,7 +49,7 @@
 		<div class="cl"><span class="icon d_job_more btn" data-more="explorerJobList" onclick="more_icons('lib_jobs',12,'explorerJobList','','<?=$keyword?>','<?=$category?>')"></span></div>
 			<?php } unset($_RNum); ?>
 	</div>
-	<?php elseif($sub == 'mentor'): ?>
+	<?php elseif($sub == 'mentor' || !$sub): ?>
 	<div class="cl bl center" style="font-size: 20px;">멘토</div>
 	<div class="cl tanMain">
 		<div class="cl">
@@ -126,4 +127,5 @@ window.onscroll = function(ev) {
        nowLoading =  true;  $('span[data-more="<?=($sub=='mentor'?'explorerMentorList':'explorerJobList')?>"]').click(); 
     }
 };
+
 </script>

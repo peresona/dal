@@ -94,7 +94,10 @@ function remember_idpw(ths)
 window.onload = function()
 {
 	document.getElementById('userid').focus();
+	
+	<?php if(strpos($g['url_host'], 'app.')):?>
 	getUuid('resultSuccess'); // UUID 받아오기
+	<?php endif; ?>
 }
 //]]>
 </script>

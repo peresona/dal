@@ -50,34 +50,30 @@
 	<div id="box_menu" class="cl bg_white">
 		<ul>
 		<?php if($my['memberuid'] && $my['mentor_confirm']=='Y'): ?>
-			<li><a href="/mypage/?page=info">My page</a></li>
-			<li><a href="/mblog/?mentor=<?=$my['memberuid']?>">나의 멘토 블로그</a></li>
-			<li><a href="/mypage/?page=myqnaroom">나의 QnA 게시판</a></li>
-			<li><a href="/mypage/?page=calendar">멘토링 달력</a></li>
+			<li><a href="/mypage/?page=info">내 정보</a></li>
+			<li><a href="/mblog/?mentor=<?=$my['memberuid']?>">멘토 블로그</a></li>
+			<li><a href="/mypage/?page=myqnaroom">Q&amp;A</a></li>
+			<li><a href="/mypage/?page=calendar">멘토링 스케쥴</a></li>
 			<li><a href="/mypage/?page=request">수업 요청 목록</a></li>
 			<li><a href="/mypage/">나의 활동</a></li>
-			<li><a href="/explorer/">탐색</a></li>
-			<li><a href="/compass/">진로 Q&amp;A</a></li>
-			<li><a href="/review/">교육후기</a></li>
-			<li><a href="/intro/">About 달꿈</a></li>
 			<li><a href="/?r=home&a=logout">로그아웃</a></li>
 		<?php elseif($my['memberuid']): ?>
-			<li><a href="/mypage/?page=info">My page</a></li>
+			<li><a href="/mypage/?page=info">내 정보</a></li>
 			<li><a href="/mypage/?page=lib">나의 관심사</a></li>
 			<li><a href="/mypage/?page=myqna">나의 Q&amp;A</a></li>
 			<li><a href="/mypage/?page=myapply">수강 신청 내역</a></li>
 			<li><a href="/mypage/?page=apply_event">교육 진행 현황</a></li>
 			<li><a href="/explorer/">탐색</a></li>
-			<li><a href="/compass/">진로 Q&amp;A</a></li>
-			<li><a href="/review/">교육후기</a></li>
+		<!-- 	<li><a href="/compass/">진로 Q&amp;A</a></li> -->
+			<li><a href="/review/">달꿈 소식</a></li>
 			<li><a href="/intro/">About 달꿈</a></li>
 			<li><a href="/?r=home&a=logout">로그아웃</a></li>
 		<?php else:?>
 			<li><a href="/?mod=login">로그인</a></li>
 			<li><a href="/?mod=join">회원가입</a></li>
 			<li><a href="/explorer/">탐색</a></li>
-			<li><a href="/compass/">진로 Q&amp;A</a></li>
-			<li><a href="/review/">교육후기</a></li>
+			<!-- <li><a href="/compass/">진로 Q&amp;A</a></li> -->
+			<li><a href="/review/">달꿈 소식</a></li>
 			<li><a href="/intro/">About 달꿈</a></li>
 			<li><a onclick="$('#modal_myApplyList').show(); $('#d_drawer').removeClass('show');">수강신청 조회</a></li>
 		<?php endif; ?>

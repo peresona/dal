@@ -30,7 +30,7 @@ switch ($agree) {
 		$sqlque .= " and RQ.agree='N'";
 		$sqlque2 .= " and agree='N'";
 		break;
-	// 마감
+	// 무응답
 	case 'not':
 		$sqlque .= " and RQ.agree='M'";
 		$sqlque2 .= " and agree='M'";
@@ -143,6 +143,7 @@ $resultArray = array('100' => '<font color="blue">강의완료</font>', '50' => 
 		$gradeName = array('','E','D','C','B','A');
 		$price_list = getUidData('rb_dalkkum_program',$R['program']);
 		$temp['price'] = $MBRD['mentor_grade']?$price_list['price'.$gradeName[$MBRD['mentor_grade']]]:0;
+
 	?>
 	<tr>
 		<td><?php echo $NUM-((($p-1)*$recnum)+$_rec++)?></td>
@@ -153,7 +154,7 @@ $resultArray = array('100' => '<font color="blue">강의완료</font>', '50' => 
 		<td><?=$R['exact_cash']?number_format($R['exact_cash'])."원":'-'?><?php $sum_myprice+=$R['exact_cash']; ?></td>
 		<td>
 			<?php if($R['agree']=='D' && $R['agreeable']=='Y'){?>
-				<input type="button" class="btnblue center" value="수락/거절" onclick="class_request(<?=$R['GUID']?>);">
+				<input type="button" class="btnblue center" value="수락/거절" onclick="class_request(<?=$R['RUID']?>,<?=$R['GUID']?>);">
 			<?php } else echo $agreeName[$R['agree']]; ?>
 		</td>
 	<td><?=$resultArray[$R['score4']]?></td>

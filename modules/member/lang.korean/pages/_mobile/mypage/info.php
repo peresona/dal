@@ -21,6 +21,7 @@ include_once $g['dir_module_skin'].'_menu.php';
 		<?php echo $my['name']?>(<?php echo $my['id']?>)<?=$level_ment?'<br>'.$level_ment:''?>
 		<div id="msg_id" class="cl red"></div>
 	</div>
+	<!--
 	<div class="join_cl">
 		<div class="cl"> <font class="black">암호변경</font> <font style="color: #999; font-size: 10px;">(암호 변경을 원하시면 입력하세요.)</font><br> </div>
 		<div class="cl"><?php $tel2=explode('-',$my['tel2'])?>
@@ -29,6 +30,7 @@ include_once $g['dir_module_skin'].'_menu.php';
 			<input type="password" name="new_pw2" value="" maxlength="50" placeholder="새 암호 확인" class="d_form_underline center" style="width : 32%" />
 		</div>
 	</div>
+	-->
 	<div class="join_cl">
 		<font class="black">프로필 사진</font><br>
 		<center><img src="/_var/simbol/180.<?=($my['photo']?$my['photo']:'default.jpg')?>" alt="" style="max-height: 150px;" data-inhtml="mypic_change"<?php if($my['photo']):?> onclick="del_pic('mypic_change','mypic', '해당 이미지를 삭제하시겠습니까?');"<?php endif; ?>></center><br>
@@ -77,6 +79,7 @@ include_once $g['dir_module_skin'].'_menu.php';
 		</div>
 	</div>
 	<?php endif; ?>
+<?php if($my['mentor_confirm']!='Y'):?>
 <br>
 	<h2>추가 정보</h2>
 	<?php if($d['member']['form_addr']):?>
@@ -127,6 +130,7 @@ include_once $g['dir_module_skin'].'_menu.php';
 			<input type="text" name="sc_parent_tel_3" maxlength="4" size="4" value="<?php echo $parent_tel[2]?>" placeholder="" class="d_form_underline center" style="width : 20%" />
 		</div>
 	</div>
+<?php endif; ?>
 	<br>
 	<?php else:?>
 	<br>
@@ -153,30 +157,14 @@ include_once $g['dir_module_skin'].'_menu.php';
 				<div class="fl"><font class="black">멘토 위치</font></div>
 		</div>
 		<div class="cl">
-			<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyCrnWttsGI8pPdETvOA1DBiPNueaEa6cIc&sensor=false&libraries=places'></script>
-			<script src="/static/locationpicker.jquery.min.js"></script>
-			<input type="hidden" id="addr_lat" name="addr_lat">
-			<input type="hidden" id="addr_long" name="addr_long">
-			<input type="text" id="address" class="d_form_underline" name="address" style="width: 100%;" value="<?=$addr_address?>"><br>
+			<input type="hidden" id="addr_lat" name="addr_lat" value="<?=$my['addr_lat']?>">
+			<input type="hidden" id="addr_long" name="addr_long" value="<?=$my['addr_long']?>">
+			<input type="text" class="d_form_underline center" name="keyword" id="place_keyword" style="width: 50%;" placeholder="도시명 / 동 / 번지 입력" autocomplete="off">
+			<input type="button" onclick="search_move();" class="btnblue" value="지도에서 찾기">
+			<div id="grp_map" style="width: 100%; height: 350px;"></div>
+			<input type="text" id="address" class="d_form_underline" name="address" style="width: 100%;" value="<?=$my['address']?>" readonly="readonly" placeholder="주소 (지도 위 검색 후 자동 기입)"><br>
 			<input type="text" id="address_detail" class="d_form_underline" name="address_detail" style="width: 100%;" placeholder="상세주소"
-			 value="<?=$my['address_detail']?>">
-			<div id="grp_map" style="width: 100%; height: 400px;"></div>
-			<script>
-			    $('#grp_map').locationpicker({
-					location: {
-					latitude: <?=($my['addr_lat']?$my['addr_lat']:'37.49789009883285')?>,
-					longitude: <?=($my['addr_long']?$my['addr_long']:'127.02757669561147')?>
-					},
-					radius: 0,
-					<?php if($my['addr_lat']) echo "zoom: 18," ?>
-					inputBinding: {
-					latitudeInput: $('#addr_lat'),
-					longitudeInput: $('#addr_long'),
-					locationNameInput: $('#address')
-					},
-					enableAutocomplete: true
-				});
-			</script>
+			 value="<?=$my['address_detail']?>" autocomplete="off">
 		</div>
 	</div>
 	<div id="mentor_job" class="join_cl" style="overflow-y: visible;">
@@ -483,7 +471,7 @@ function saveCheck(f)
 		return false;
 	}
 
-	<?php if($d['member']['form_addr']&&$d['member']['form_addr_p']):?>
+	<?php if($d['member']['form_addr']&&$d['member']['form_addr_p'] && $my['mentor_confirm']!='Y'):?>
 	if (!f.foreign || f.foreign.checked == false)
 	{
 		if (f.addr1.value == ''||f.addr2.value == '')
@@ -604,8 +592,9 @@ $(document).ready(function(){
 
 //]]>
 </script>
-
-
-
-
-
+<script>
+	var default_lat = '<?=$my["addr_lat"]?>';
+	var default_long = '<?=$my["addr_long"]?>';
+</script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6b72c4c6de26e90f11c0e92b8f79b97a"></script>
+<script src="/static/daumPicker.js"></script>

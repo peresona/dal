@@ -2,7 +2,7 @@
 		<?php if(strpos($g['url_host'], 'app.')):?>
 			<div class="cl pr">
 				<div class="pa" style="right: 0; top:0; "><span class="icon d_sub_menu cp" onclick="app_drawer_menu();"></span></div>
-				<a href="/"><span class="icon" style="width: 100%; height: 40px; line-height: 40px; font-size: 16px; font-size:bold; "><b><?=($_HM['name']?$_HM['name']:$_HP['name'])?></b></span></a>
+				<span class="icon" style="width: 100%; height: 40px; line-height: 40px; font-size: 16px; font-size:bold; "><b><?=($_HM['name']?$_HM['name']:$_HP['name'])?></b></span>
 				<div class="pa" style="left: 0; top:0; "><span class="icon d_sub_back cp" onclick="hybrid_menubar('hide'); history.back();"></span></div>
 			</div>
 		<?php else: ?>

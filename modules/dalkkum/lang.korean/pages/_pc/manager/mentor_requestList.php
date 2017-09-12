@@ -2,9 +2,15 @@
 	if(!defined('__KIMS__') || !$group) exit;
 	checkAdmin(0);
 	$GD = getUidData('rb_dalkkum_group',$group);
-	$_query = "select (select count(*) from rb_dalkkum_request where group_seq=R.group_seq and uid<R.uid and job_seq=J.uid)+1 as ranks, R.*,M.name, M.mentor_grade, M.mentor_score, M.email,J.name as job 
+	$_query = "select M.addr_lat,M.addr_long, SQRT(power(".$GD['grp_lat']."-M.addr_lat,2)+power(".$GD['grp_long']."-M.addr_long,2)) as distance, (
+
+	select count(*)
+from rb_dalkkum_request RR, rb_s_mbrdata RM 
+where RR.mentor_seq=RM.memberuid and RR.job_seq=R.job_seq and RR.group_seq=".$group." and SQRT(power(".$GD['grp_lat']."-RM.addr_lat,2)+power(".$GD['grp_long']."-RM.addr_long,2)) < distance
+
+)+1 as ranks, R.*,M.name, M.mentor_grade, M.mentor_score, M.email,J.name as job
 from rb_s_mbrdata as M, rb_dalkkum_request as R, rb_dalkkum_job as J 
-where M.memberuid=R.mentor_seq and M.mentor_job = J.uid and R.group_seq=".$group." order by field(R.agree,'Y') desc ,ranks asc";
+where M.memberuid=R.mentor_seq and M.mentor_job = J.uid and R.group_seq=".$group." order by field(R.agree,'Y') desc, R.job_seq asc ,distance asc";
 	$_SCD = db_query($_query,$DB_CONNECT);
 	$NUM = db_num_rows($_SCD);
 	$many['push'] = getDbRows('rb_dalkkum_request',"group_seq=".$group." and push_go='Y'");
@@ -62,7 +68,7 @@ where M.memberuid=R.mentor_seq and M.mentor_job = J.uid and R.group_seq=".$group
 						else if($SCD['agree']=='D' && $SCD['push_go']=='E') echo "<font color='green'>연결 기기 없음 (답변 대기)</font>";
 						else if($SCD['agree']=='M') echo "마감";
 						else if($SCD['agree']=='D') echo "푸시 대기";
-						//else if(getDateCal('YmdHis',$SCD['d_regis'],1) <= $date['totime']) echo "무응답";
+						//else if(getDateCal('YmdHis',$SCD['d_regis'],1) <= $date['totime']) echo "마감";
 						//else if(getDateCal('YmdHis',$SCD['d_regis'],1) > $date['totime'] && $SCD['push_date'] && $SCD['push_token']) echo "진행중";
 						?></td>
 							<td>
@@ -77,7 +83,7 @@ where M.memberuid=R.mentor_seq and M.mentor_job = J.uid and R.group_seq=".$group
 						<td></b></td>
 						<td><?=($SCD['tel2']?$SCD['tel2']:'-')?></td>
 						<td></td>
-						<td></td>
+						<td><?=getDistance($SCD['addr_lat'],$SCD['addr_long'],$GD['grp_lat'],$GD['grp_long'],2)?></td>
 						<td><?=($SCD['email']?$SCD['email']:'-')?></td>
 						<td>-</td>
 					</tr>

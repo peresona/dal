@@ -78,7 +78,7 @@
 							<td>
 							<?php if($JD['firsts']>0 && $JD['agree']=="Y"):?><font style="color:blue; font-weight:bold;">수락</font>
 							<?php elseif($JD['firsts']>0 && $JD['agree']=="N"):?><font style="color:red; font-weight:bold;">거절</font>
-							<?php elseif($JD['firsts']>0 && $JD['agree']=="M"):?><font style="color:red; font-weight:bold;">무응답</font>
+							<?php elseif($JD['firsts']>0 && $JD['agree']=="M"):?><font style="color:red; font-weight:bold;">마감</font>
 							<?php elseif($JD['firsts']>0):?><font style="color:green; font-weight:bold;">요청중</font><?php endif; ?></td>
 						</tr>
 					<?php endwhile; ?>

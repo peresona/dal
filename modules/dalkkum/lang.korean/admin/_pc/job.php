@@ -237,19 +237,6 @@ function saveCheck(f)
 		return false;
 	}
 
-	if (f.img.value == "" && f.before_img.value=="")
-	{
-		alert('이미지를 선택해주세요.');
-		f.img.focus();
-		return false;
-	}
-	
-	if (f.content.value == '')
-	{
-		alert('내용을 입력해 주세요.       ');
-		f.content.focus();
-		return false;
-	}
 
 	return confirm('정말로 실행하시겠습니까?         ');
 }

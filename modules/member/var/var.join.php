@@ -2,7 +2,7 @@
 $d['member']['join_enable'] = "1";
 $d['member']['join_mobile'] = "1";
 $d['member']['join_out'] = "2";
-$d['member']['join_rejoin'] = "0";
+$d['member']['join_rejoin'] = "1";
 $d['member']['join_auth'] = "1";
 $d['member']['join_level'] = "1";
 $d['member']['join_group'] = "1";
@@ -10,7 +10,7 @@ $d['member']['join_point'] = "1000";
 $d['member']['join_pointmsg'] = "[가입축하포인트]회원가입을 축하합니다.";
 $d['member']['join_cutid'] = "admin,root,webmaster";
 $d['member']['join_cutnic'] = "관리자,운영자,마스터,웹마스터";
-$d['member']['join_email'] = "no-reply@dalkkum.net";
+$d['member']['join_email'] = "admin@dalkkum.com";
 $d['member']['join_email_send'] = "";
 $d['member']['form_agree'] = "1";
 $d['member']['form_jumin'] = "0";

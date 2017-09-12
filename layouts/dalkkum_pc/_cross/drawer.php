@@ -48,15 +48,15 @@
 	<div id="box_menu" class="cl bg_white">
 		<ul>
 		<?php if($my['memberuid'] && $my['mentor_confirm']=='Y'): ?>
-			<li><a href="/mypage/?page=info">My page</a></li>
-			<li><a href="/mblog/?mentor=<?=$my['memberuid']?>">나의 멘토 블로그</a></li>
-			<li><a href="/mblog/qna/?mentor=<?=$my['memberuid']?>">나의 QnA 게시판</a></li>
-			<li><a href="/mypage/?page=calendar">멘토링 달력</a></li>
+			<li><a href="/mypage/?page=info">내 정보</a></li>
+			<li><a href="/mblog/?mentor=<?=$my['memberuid']?>">멘토 블로그</a></li>
+			<li><a href="/mblog/qna/?mentor=<?=$my['memberuid']?>">Q&amp;A</a></li>
+			<li><a href="/mypage/?page=calendar">멘토링 스케쥴</a></li>
 			<li><a href="/mypage/?page=request">수업 요청 목록</a></li>
 			<li><a href="/mypage/">나의 활동</a></li>
 			<li><a href="/?r=home&a=logout">로그아웃</a></li>
 		<?php elseif($my['memberuid']): ?>
-			<li><a href="/mypage/?page=info">My page</a></li>
+			<li><a href="/mypage/?page=info">내 정보</a></li>
 			<li><a href="/mypage/?page=lib">나의 관심사</a></li>
 			<li><a href="/mypage/?page=myqna">나의 QnA</a></li>
 			<li><a href="/mypage/?page=myapply">수강 신청 내역</a></li>

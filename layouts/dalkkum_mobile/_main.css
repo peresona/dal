@@ -309,3 +309,5 @@ area:focus, input:focus {
 			.lastestView { float: left; width: 32%;  height: 280px;}
 			.lastestView > .img {height: 200px;}
 		}
+		/* 구글맵 처리 */
+		#grp_map {z-index: 0; }

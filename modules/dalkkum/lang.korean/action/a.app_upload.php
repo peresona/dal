@@ -84,7 +84,7 @@ foreach($_FILES as $file){
 	}
 
 	/* 이미지 업로드 */
-    imagejpeg($image_r, $saveFile2);
+    /* imagejpeg($image_r, $saveFile2); */
     switch ($fileExt) {
         case 'jpg':
             imagejpeg($image_r, $saveFile2);

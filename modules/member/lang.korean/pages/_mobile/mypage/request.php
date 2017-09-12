@@ -28,7 +28,7 @@ switch ($agree) {
 		$sqlque .= " and RQ.agree='N'";
 		$sqlque2 .= " and agree='N'";
 		break;
-	// 마감
+	// 무응답
 	case 'not':
 		$sqlque .= " and RQ.agree='M'";
 		$sqlque2 .= " and agree='M'";
@@ -129,13 +129,13 @@ $resultArray = array('100' => '<font color="blue">강의완료</font>', '50' => 
 	?>
 	<tr>
 		<td><?=$NUM-((($p-1)*$recnum)+$_rec++)?></td>
-		<td><?=getDateFormat($R['date_start'],'Y.m.d')?><br><?=getDateFormat($R['date_start'],'H시')?></td>
+		<td><?=getDateFormat($R['date_start'],'Y.m.d')?></td>
 		<td><?=$R['SCName']?><br><?=$R['groupName']?></td>
 		<td><?=($temp['price']/10000)?></td>
 		<td><?=$R['exact_cash']?number_format($R['exact_cash'])."원":'-'?><?php $sum_myprice+=$R['exact_cash']; ?></td>
 		<td>
 			<?php if($R['agree']=='D' && $R['agreeable']=='Y'){?>
-				<input type="button" class="btnblue center" value="수락/거절" onclick="class_request(<?=$R['GUID']?>);">
+				<input type="button" class="btnblue center" value="수락/거절" onclick="class_request(<?=$R['RUID']?>,<?=$R['GUID']?>);">
 			<?php } else echo $agreeName[$R['agree']]; ?>
 		</td>
 	<td><?=$resultArray[$R['score4']]?></td>
