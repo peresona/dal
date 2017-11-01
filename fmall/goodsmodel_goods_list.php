@@ -1,6 +1,5 @@
-<?php
-
-public function goods_list($sc){
+<?php 
+public function allgoods_list($sc){
 
 		// ----- 기본 선언 ---- //
 		$data = array();
@@ -21,7 +20,7 @@ public function goods_list($sc){
 		$this->load->model('membermodel');
 		$this->load->model('categorymodel');
 		$this->load->library('sale');
-     
+
 		$seo_info		= ($CI->seo) ? $CI->seo : config_load('seo');
 		$base_image_alt	= $seo_info['image_alt'];
 
@@ -109,37 +108,6 @@ public function goods_list($sc){
 			o.reserve_rate,
 			o.reserve_unit,
 			o.reserve,
-			gls.brand_title	as brand_title,
-			gls.brand_title_eng	as brand_title_eng,
-			gls.brand_code	as brand_code,
-			gls.today_icon	as icons,
-			gls.price_".date('H')."	as sale_price,
-			gls.today_solo_start,
-			gls.today_solo_end,
-			gls.price_00,
-			gls.price_01,
-			gls.price_02,
-			gls.price_03,
-			gls.price_04,
-			gls.price_05,
-			gls.price_06,
-			gls.price_07,
-			gls.price_08,
-			gls.price_09,
-			gls.price_10,
-			gls.price_11,
-			gls.price_12,
-			gls.price_13,
-			gls.price_14,
-			gls.price_15,
-			gls.price_16,
-			gls.price_17,
-			gls.price_18,
-			gls.price_19,
-			gls.price_20,
-			gls.price_21,
-			gls.price_22,
-			gls.price_23,
 			g.display_terms,
 			g.display_terms_text,
 			g.display_terms_color
@@ -477,9 +445,7 @@ public function goods_list($sc){
 		}
 
 		if(!empty($sc['limit'])){
-			// 수정 2017.10.28 by kiere
-			if(!empty($sc['page'])) $sqlLimitClause = "limit ".(($sc['page']-1)*$sc['perpage']).", {$sc['perpage']} "; 
-			else $sqlLimitClause = "limit {$sc['limit']}";
+			$sqlLimitClause = "limit {$sc['limit']}";
 		}
 
 		// 입점몰 입점상태
@@ -518,7 +484,7 @@ public function goods_list($sc){
 			{$sqlOrderbyClause}
 			{$sqlLimitClause}
 		";
-	
+		
 		//echo $sql;
 
 		if($sqlLimitClause){
@@ -531,6 +497,8 @@ public function goods_list($sc){
 				$result = select_page($sc['perpage'],$sc['page'],10,$sql,array());
 			}
 		}
+
+		//var_dump($result);
 
 		$params_filter['auto_order']	= $sc['auto_order'];
 		$params_filter['result']			= $result['record'];
